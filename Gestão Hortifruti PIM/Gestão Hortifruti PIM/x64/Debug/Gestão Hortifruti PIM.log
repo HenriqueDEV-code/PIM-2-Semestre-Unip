@@ -1,0 +1,13 @@
+﻿  main.c
+Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(125,33): warning C4476: 'scanf_s': tipo desconhecido de caractere de campo '.' no especificador de formato
+Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(125,41): warning C4474: 'scanf_s': excesso de argumentos transmitidos para cadeia de caracteres de formato
+      Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(125,41):
+      espaços reservados e seus parâmetros esperam 0 argumentos variadic, mas 1 foram fornecidos
+  
+Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(126,33): warning C4476: 'scanf_s': tipo desconhecido de caractere de campo '.' no especificador de formato
+Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(126,41): warning C4474: 'scanf_s': excesso de argumentos transmitidos para cadeia de caracteres de formato
+      Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\main.c(126,41):
+      espaços reservados e seus parâmetros esperam 0 argumentos variadic, mas 1 foram fornecidos
+  
+Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\Gestão Hortifruti PIM\Titulos.h(21): warning C4716: 'CL': deve retornar um valor
+  Gestão Hortifruti PIM.vcxproj -> Z:\PROGRAMACAO\VISUAL STUDIO\Projetos Linguagem (C)\Gestão Hortifruti PIM\x64\Debug\Gestão Hortifruti PIM.exe
