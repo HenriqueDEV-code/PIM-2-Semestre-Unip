@@ -1,13 +1,15 @@
 #include <stdio.h>
 
+enum keys {
+    ENTER = 13,
+};
 
-/* structs */
 typedef struct Date
 {
 	int dia;
 	int mes;
 	int ano;
-}data;
+} data;
 
 typedef struct Mercadoria
 {
@@ -20,10 +22,8 @@ typedef struct Mercadoria
 	float PrecoProductCompra;
 	float MargemProduct;
 
-}Products;
+} Products;
 
-
-/* funcoes */
 int MenuPrincipalSistema();
 int Cadastro();
 void Vendas();

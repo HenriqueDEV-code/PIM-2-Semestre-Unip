@@ -1,69 +1,65 @@
-/*SISTEMA DE GESTAO AO HORTIFRUTI TRABALHO PIM UNIP VS0.0.2*/
-
-
-/*BIBLIOTECAS PADRAO DO SISTEMA*/
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-
-
-/*BIBLIOTECA GRAFICA*/
-
 #include <Windows.h>
 #include <conio.h>
 #include "../include/Titulos.h"
 #include "../include/Estruturas.h"
+#include "../include/csv.h"
 
+int main() {
 
-/* variaveis globais */
-int variavel;
-
-int main()
-{
 	SetConsoleOutputCP(CP_UTF8);
 	MenuPrincipalSistema();
 
 	return 0;
 }
 
+int MenuPrincipalSistema(){
+	int coluna, linha;
+	int escolha;
 
-
-
-int MenuPrincipalSistema()
-{
-
-	do
-	{
-		int coluna, linha;
-		int escolha;
+	do {
 		MenuDeGestao();
 		escolha = 1;
 		linha = 11;
 		coluna = 8;
 		CL(coluna, linha);
 		printf("\033[34m➤\033[0m");
-		while (1)
-		{
+		while (1) {
 			int tecla;
 			setvbuf(stdin, NULL, _IONBF, 0); /* Limpa o buffer de entrada */
 
 			tecla = _getch(); /* Funcao que recebe o valor do teclado precionado */
 
 
-			if (tecla == 13) // 13 é a tecla enter do teclado
-			{
-				if (escolha == 1) Cadastro();
-				if (escolha == 2) Vendas();
-				if (escolha == 3) PesquisaPreco();
-				if (escolha == 4) RelatoriosGerais();
-				if (escolha == 5) QuemSomos();
-				if (escolha == 6) Sujestao();
-				if (escolha == 0) return 0;
-				break;
-			}
+			if (tecla == ENTER) {
+				switch(escolha) {
+					case 1:
+						Cadastro();
+						break;
+					case 2: 
+						Vendas();
+						break;
+					case 3: 
+						PesquisaPreco();
+						break;
+					case 4: 
+						RelatoriosGerais();
+						break;
+					case 5: 
+						QuemSomos();
+						break;
+					case 6: 
+						Sujestao();
+						break;
+					case 0:
+						return 0;
+						break;			
+				}
+			};
+
 			if (tecla == 72 || tecla == 80)
 			{
 				CL(coluna, linha);
@@ -88,6 +84,7 @@ int MenuPrincipalSistema()
 			CL(coluna, linha);
 			printf("\033[34m➤\033[0m");;
 		}
+
 	} while (1);
 
 
@@ -116,17 +113,33 @@ int Cadastro()
 
 			tecla = _getch(); /* Funcao que recebe o valor do teclado precionado */
 
-			if (tecla == 13)
-			{
-				if (escolha == 1) { fgets(mercadorias.descProduct, sizeof(mercadorias.descProduct), stdin); }
-				if (escolha == 2) { fgets(mercadorias.GrupProduct,sizeof(mercadorias.GrupProduct), stdin); }
-				if (escolha == 3) { scanf_s("%d-%d-%d", &mercadorias.NEWdata.dia, &mercadorias.NEWdata.mes, &mercadorias.NEWdata.ano); }
-				if (escolha == 4) { fgets(mercadorias.UNProductMedida, sizeof(mercadorias.UNProductMedida), stdin); }
-				if (escolha == 5) { scanf_s("%.2f", &mercadorias.PrecoProductCompra); }
-				if (escolha == 6) { scanf_s("%.2f", &mercadorias.MargemProduct); }
-				if (escolha == 7) { scanf_s("%d", &mercadorias.EstoqueEnterProduct); }
-				if (escolha == 0) { return MenuPrincipalSistema(); }
-				break;
+			if (tecla == ENTER) {
+				switch(escolha) {
+					case 0: 
+						MenuPrincipalSistema();
+						break;
+					case 1: 
+						fgets(mercadorias.descProduct, sizeof(mercadorias.descProduct), stdin);
+						break;
+					case 2:
+						fgets(mercadorias.GrupProduct,sizeof(mercadorias.GrupProduct), stdin);
+						break;
+					case 3:
+						scanf_s("%d-%d-%d", &mercadorias.NEWdata.dia, &mercadorias.NEWdata.mes, &mercadorias.NEWdata.ano);
+						break;
+					case 4: 
+						fgets(mercadorias.UNProductMedida, sizeof(mercadorias.UNProductMedida), stdin);
+						break;
+					case 5:
+						scanf_s("%.2f", &mercadorias.PrecoProductCompra);
+						break;
+					case 6: 
+						scanf_s("%.2f", &mercadorias.MargemProduct);
+						break;
+					case 7:
+						scanf_s("%d", &mercadorias.EstoqueEnterProduct);
+						break; 
+				}
 			}
 
 			if (tecla == 72 || tecla == 80)
