@@ -1,15 +1,8 @@
 
 #include <stdio.h>
-
-
-
-/*BIBLIOTECA GRAFICA*/
-
 #include <Windows.h>
+#include <strsafe.h>
 #include <conio.h>
-
-int variavel;
-
 
 /* Responsavel por posicionar o ponteiro no console para onde a informacao sera exibida ou extraida E|S */
 int CL(int coluna, int linha)
@@ -58,8 +51,7 @@ void MenuDeGestao()
 
 
 
-void MenuCadastroMercadorias()
-{
+void MenuCadastroMercadorias() {
 	
 		CL(118, 1);
 		printf("❌");
@@ -87,14 +79,27 @@ void MenuCadastroMercadorias()
 		printf("Usar -> " "\033[31m↑ ↓\033[0m" " para se guiar no menu. O" "\033[32m ENTER \033[0m" "para confirmar e o ❌ para sair ou retorna");
 		CL(27, 28);
 		printf("Linhas com marcacao -> " "\033[31m*\033[0m" " sao obrigatorio o preenchimento");
+		CL(11, 18);
+    	printf(" CONFIRMAR: ");
 }
 
-void MenuFluxoDeCaixa()
-{
+/*
+@params [message], indica a mensagem que será feita para mostrar na tela de notificação
+@params [iconType], indica o tipo do icone a ser usado da mensagem
+@samples showNotification(L"Cadastro realizado com sucesso!", MB_ICONINFORMATION);
+		showNotification(L"Erro ao realizar cadastro!", MB_ICONERROR);
+		showNotification(L"Atenção: Verifique os dados inseridos.", MB_ICONWARNING);
 
+*/
+void showNotification(LPCWSTR message, UINT iconType) {
+    HWND hwnd = GetConsoleWindow();
+    if (hwnd == NULL) {
+        MessageBoxW(NULL, L"Failed to get console window handle", L"Error", MB_OK | MB_ICONERROR);
+        return;
+    }
+
+    MessageBoxW(hwnd, message, L"Notification", MB_OK | iconType);
 }
 
-void MenuDePesquisaPreco()
-{
-
-}
+void MenuFluxoDeCaixa() {}
+void MenuDePesquisaPreco(){}

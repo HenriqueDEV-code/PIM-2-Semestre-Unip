@@ -2,9 +2,8 @@
 #define CSV_H
 
 #include <stdio.h>
+#include "Estruturas.h"
 
-void ler_csv(const char *nome_arquivo);
-
-void escrever_csv(const char *nome_arquivo, const char *dados);
+void SaveProductsToCSV(Products *mercadoria);
 
 #endif

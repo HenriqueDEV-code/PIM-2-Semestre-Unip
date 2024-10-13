@@ -1,27 +1,29 @@
+#ifndef ESTRUTURAS_H
+#define ESTRUTURAS_H
+
 #include <stdio.h>
 
 enum keys {
     ENTER = 13,
 };
 
-typedef struct Date
-{
-	int dia;
-	int mes;
-	int ano;
-} data;
+typedef struct {
+    int x;
+    int y;
+} Position;
 
-typedef struct Mercadoria
-{
-	const int UIDProduct;
-	char descProduct[101];
-	char GrupProduct[51];
-	data NEWdata;/* 00/00/0000 */
-	int EstoqueEnterProduct;
-	char UNProductMedida[3];/* UN|CX|KG */
-	float PrecoProductCompra;
-	float MargemProduct;
-
+typedef struct {
+    char descProduct[100];
+    char GroupProduct[100];
+    struct {
+        int dia;
+        int mes;
+        int ano;
+    } NEWdata;
+    char UNProductMedida[10];
+    double PrecoProductCompra;
+    double MargemProduct;
+    int EstoqueEnterProduct;
 } Products;
 
 int MenuPrincipalSistema();
@@ -31,3 +33,5 @@ void PesquisaPreco();
 void RelatoriosGerais();
 void QuemSomos();
 void Sujestao();
+
+#endif
