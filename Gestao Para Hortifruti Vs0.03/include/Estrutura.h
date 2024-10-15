@@ -14,8 +14,7 @@
 
 /* Definicao da estrutura de cadastro de mercadoria */
 
-typedef struct
-{
+typedef struct {
 	int UID;
 	char nome[101];
 	char Grupo[51];
@@ -23,14 +22,7 @@ typedef struct
 	char Medida[4];
 	int QNT_Estoque;
 	char Data_Validade[11];  // Formato: YYYY-MM-DD
-}Mercadoria;
-
-
-
-
-
-
-
+} Mercadoria;
 
 
 int Console(int x, int y);
@@ -120,18 +112,6 @@ void Limpar_Buffer()
 	while ((c = getchar() != '\n' && c != EOF));
 }
 
-
-/* Funcao para validar a data em formato em YYYY-MM-DD */
-int Validade_Data(const char* data)
-{
-	if (strlen(data) != 10 || data[4] != '-' || data[7] != '-') return 0;
-	for (int i = 0; i < 10; i++)
-	{
-		if (i == 4 || i == 7) continue;
-		if (!isdigit(data[i])) return 0;
-	}
-	return 1;
-}
 
 /* Funcao para ler entrada do tipo inteiro com validação */
 void Ler_Int(int* valor, const char* mensagem)
@@ -671,4 +651,31 @@ void ListarProduto()
 
 	}
 
+}
+
+/* Funcao para validar a data em formato em YYYY-MM-DD */
+int Validade_Data(const char* data) {
+	if (strlen(data) != 10 || data[4] != '-' || data[7] != '-') return 0;
+	for (int i = 0; i < 10; i++)
+	{
+		if (i == 4 || i == 7) continue;
+		if (!isdigit(data[i])) return 0;
+	}
+	return 1;
+}
+
+/*
+@params [message], indica a mensagem que será feita para mostrar na tela de notificação
+@params [iconType], indica o tipo do icone a ser usado da mensagem
+@samples showNotification(L"Cadastro realizado com sucesso!", MB_ICONINFORMATION);
+		showNotification(L"Erro ao realizar cadastro!", MB_ICONERROR);
+		showNotification(L"Atenção: Verifique os dados inseridos.", MB_ICONWARNING);
+*/
+void showNotification(LPCWSTR message, UINT iconType) {
+    HWND hwnd = GetConsoleWindow();
+    if (hwnd == NULL) {
+        MessageBoxW(NULL, L"Failed to get console window handle", L"Error", MB_OK | MB_ICONERROR);
+        return;
+    }
+    MessageBoxW(hwnd, message, L"Notification", MB_OK | iconType);
 }

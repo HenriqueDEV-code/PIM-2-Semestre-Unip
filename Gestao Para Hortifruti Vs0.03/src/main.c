@@ -1,13 +1,8 @@
 ﻿/* Sistema que ajuda o hortifruti */
-#
-#include "Estrutura.h"
+#include "../include/Estrutura.h"
 
-
-int main()
-{
+int main() {
 	SetConsoleOutputCP(CP_UTF8);
 	MenuDeGestaoHortifrut();
 	return 0;
 }
-
-
