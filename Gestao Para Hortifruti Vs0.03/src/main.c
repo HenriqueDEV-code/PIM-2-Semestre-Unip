@@ -1,5 +1,4 @@
-﻿/* Sistema que ajuda o hortifruti */
-#include "../include/Estrutura.h"
+﻿#include "../include/misc.h"
 
 int main() {
 	SetConsoleOutputCP(CP_UTF8);

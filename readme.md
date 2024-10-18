@@ -71,6 +71,8 @@ Após compilar, a aplicação está localizada em um arquivo `.exe` no caso como
 
 ```
 
+https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+
 ## Contribuindo
 
 (Normas de Commit)
