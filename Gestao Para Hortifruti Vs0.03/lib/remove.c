@@ -1,5 +1,7 @@
-void ExcluirProduto()
-{
+#include <stdio.h>
+#include "../include/product.h"
+
+void ExcluirProduto() {
 	Sleep(500);
 	system("CLS");
 	FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");

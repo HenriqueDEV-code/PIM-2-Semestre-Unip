@@ -10,6 +10,7 @@ typedef enum {
 } Keys;
 
 
+
 int Console(int x, int y);
 void borda(int largura, int altura);
 void Limpar_Buffer();
@@ -18,6 +19,5 @@ void Ler_Int(int* valor, const char* mensagem);
 void Ler_Float(float* valor, const char* mensagem);
 void Ler_String(char* str, int max_tamanho, const char* mensagem);
 void Ler_Unidade_Medida(char* medida, int max_tamanho, const char* mensagem);
-void showNotification(char* message, int* icontype);
+void showNotification(LPCWSTR message, UINT iconType);
 void EntradaMercadoria(void);
-int MenuDeGestaoHortifrut(void);

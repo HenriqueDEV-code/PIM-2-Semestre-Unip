@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include "../include/product.h"
+
 void EditeProduto() {
 	Sleep(500);
 	system("CLS");

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../include/product.h"
 
 void BuscarProduto() {
@@ -47,7 +48,7 @@ void BuscarProduto() {
 		printf("PRODUTO NAO ENCONTRADO ❗");
 		Sleep(500);
 		system("CLS");
-		return EntradaMercadoria();
+		EntradaMercadoria();
 
 	}
 	fclose(arquivo);

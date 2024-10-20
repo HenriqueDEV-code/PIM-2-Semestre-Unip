@@ -1,18 +1,30 @@
+# Compilador e flags
 CC = gcc
-CFLAGS = -Wall
-OBJ = arquivo1.o arquivo2.o arquivo3.o
-TARGET = nome_do_programa
+CFLAGS = -Iinclude -Wall -Wextra
 
+# Diretórios
+SRC_DIR = src
+LIB_DIR = lib
+DIST_DIR = dist
+
+# Arquivos fonte
+SRC_FILES = $(SRC_DIR)/main.c $(SRC_DIR)/validation.c $(SRC_DIR)/menus/produto.c $(SRC_DIR)/menus/menu.c
+LIB_FILES = $(LIB_DIR)/create.c $(LIB_DIR)/misc.c $(LIB_DIR)/read.c $(LIB_DIR)/remove.c $(LIB_DIR)/update.c
+
+# Arquivo executável
+TARGET = $(DIST_DIR)/app.exe
+
+# Regra padrão
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CC) -o $@ $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Regra para criar o executável
+$(TARGET): $(SRC_FILES) $(LIB_FILES)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(TARGET)
+
+.PHONY: all clean
 
 # Variáveis:
 
