@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <windows.h>
+#include <conio.h>
 #include "../include/product.h"
 
 void EditeProduto() {
@@ -63,5 +65,5 @@ void EditeProduto() {
 		printf("Produto nao encontrado!\n");
 	}
 	Sleep(1500);
-	return EntradaMercadoria();
+	EntradaMercadoria();
 }

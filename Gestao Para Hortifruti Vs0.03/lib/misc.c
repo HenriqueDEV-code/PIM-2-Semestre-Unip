@@ -93,13 +93,12 @@ void Ler_Int(int* valor, const char* mensagem)
 	printf("%s", mensagem);
 	while (scanf("%d", valor) != 1 || *valor < 0)
 	{
-
 		Console(5, 2);
 		printf("\aENTRADA INVALIDA❗ TENTE NOVAMENTE.");
 		Limpar_Buffer();
 		Sleep(500);
 		system("CLS");
-		return EntradaMercadoria();
+		// EntradaMercadoria();
 	}
 	Limpar_Buffer();
 }

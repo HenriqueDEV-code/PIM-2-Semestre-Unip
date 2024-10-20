@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <windows.h>
+#include <conio.h>
 #include "../include/product.h"
 
 void ExcluirProduto() {
@@ -33,7 +35,7 @@ void ExcluirProduto() {
 			printf("PRODUTO EXCLUIDO COM SUCESSO❗");
 			Sleep(500);
 			system("CLS");
-			return EntradaMercadoria();
+			EntradaMercadoria();
 		}
 		else {
 			fprintf(temp, "%d%s%s%.2f%s%d%s\n", produto.UID, produto.nome, produto.Grupo, produto.preco, produto.Medida, produto.QNT_Estoque, produto.Data_Validade);
@@ -43,13 +45,14 @@ void ExcluirProduto() {
 	fclose(temp);
 	remove(ARQUIVO_ESTOQUE);
 	rename("temp.csv", ARQUIVO_ESTOQUE);
+	
 	if (!encontrado)
 	{
 		Console(5, 2);
 		printf("PRODUTO NAO ENCONTRADO ❗");
 		Sleep(500);
 		system("CLS");
-		return EntradaMercadoria();
+		EntradaMercadoria();
 
 	}
 

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h>  // Para Sleep e system
+#include <windows.h>  
 #include "../include/product.h"
 #include "../include/menu.h"
 #include "../include/misc.h"
@@ -17,19 +17,13 @@ void CadastroProduto() {
     Ler_Int(&produto.UID, "Digite o ID do produto: ");
 
     if ((arquivo = fopen(ARQUIVO_ESTOQUE, "r")) == NULL) {
-        ExibirErroArquivo();
-        return EntradaMercadoria();
+        if (VerificarIdDuplicado(arquivo, produto.UID)) {
+            showNotification(L"Produto com Id Duplicado", MB_ICONERROR);
+        }
+        fclose(arquivo);
     }
-
-    if (VerificarIdDuplicado(arquivo, produto.UID)) {
-        ExibirErroIdDuplicado(produto.UID);
-        return EntradaMercadoria();
-    }
-
-    fclose(arquivo);
 
     Console(5, 3);
-    printf("ID %d CADASTRADO COM SUCESSO❗", produto.UID);
 
     ColetarDadosProduto(&produto);
 
@@ -40,7 +34,7 @@ void CadastroProduto() {
         printf("Produto cadastrado com sucesso!\n");
         Sleep(1500);
     } else {
-        ExibirErroArquivo();
+        showNotification(L"Erro no arquivo", MB_ICONEXCLAMATION);
     }
 
     EntradaMercadoria();
@@ -51,11 +45,6 @@ void ExibirBordas() {
     borda(120, 30);
 }
 
-void ExibirErroArquivo() {
-    Console(5, 2);
-    printf("\aERRO AO ABRIR O ARQUIVO❗\n");
-}
-
 int VerificarIdDuplicado(FILE* arquivo, int id) {
     Mercadoria temp;
     while (fscanf(arquivo, "%d;%*[^;];%*[^;];%*f;%*[^;];%*d;%*[^;]\n", &temp.UID) != EOF) {
@@ -64,15 +53,6 @@ int VerificarIdDuplicado(FILE* arquivo, int id) {
         }
     }
     return 0;
-}
-
-void ExibirErroIdDuplicado(int id) {
-    Console(5, 2);
-    printf("ERRO: O ID %d JA EXISTE NO SISTEMA❗", id);
-    Console(5, 3);
-    printf("CADASTRO ABORTADO DEVIDO A DUPLICIDADE DE ID.");
-    Sleep(500);
-    system("CLS");
 }
 
 void ColetarDadosProduto(Mercadoria* produto) {
