@@ -1,5 +1,8 @@
 #include "../include/misc.h"
 
+#define MAX_LINHA  1024
+#define MAX_CAMPOS 10
+
 /*
 @params [message], indica a mensagem que será feita para mostrar na tela de notificação
 @params [iconType], indica o tipo do icone a ser usado da mensagem
@@ -162,4 +165,28 @@ int Validade_Data(const char* data) {
 		if (!isdigit(data[i])) return 0;
 	}
 	return 1;
+}
+
+void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int num_campos)) {
+    FILE* arquivo = fopen(nome_arquivo, "r");
+    if (arquivo == NULL) {
+        printf("\aERRO AO ABRIR O ARQUIVO!\n");
+        return;
+    }
+
+    char linha[MAX_LINHA];
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        char* campos[MAX_CAMPOS];
+        int num_campos = 0;
+
+        char* campo = strtok(linha, ";");
+        while (campo && num_campos < MAX_CAMPOS) {
+            campos[num_campos++] = campo;
+            campo = strtok(NULL, ";");
+        }
+
+        processarLinha(campos, num_campos);
+    }
+
+    fclose(arquivo);
 }
