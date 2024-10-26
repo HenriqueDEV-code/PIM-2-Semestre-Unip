@@ -2,38 +2,50 @@
 #include <string.h>
 #include "../include/product.h"
 
+void processarProduto(char** campos, int num_campos, void* dados_ptr) {
+    if (num_campos != 7) {
+        printf("Linha inválida\n");
+        return;
+    }
+
+    char** dados = (char**)dados_ptr;
+    char* nome_busca = dados[0];
+    int* encontrado = (int*)dados[1];
+
+    Mercadoria produto;
+    produto.UID = atoi(campos[0]);
+    strcpy(produto.nome, campos[1]);
+    strcpy(produto.Grupo, campos[2]);
+    sscanf(campos[3], "%f", &produto.preco);
+    strcpy(produto.Medida, campos[4]);
+    produto.QNT_Estoque = atoi(campos[5]);
+    strcpy(produto.Data_Validade, campos[6]);
+
+    if (strstr(produto.nome, nome_busca)) {
+        Console(5, 9);
+        printf("PRODUTO ENCONTRADO:\n");
+        printf("ID: %d\n", produto.UID);
+        printf("NOME: %s\n", produto.nome);
+        printf("CATEGORIA: %s\n", produto.Grupo);
+        printf("PREÇO: R$ %.2f\n", produto.preco);
+        printf("UNIDADE DE MEDIDA: %s\n", produto.Medida);
+        printf("ESTOQUE: %d\n", produto.QNT_Estoque);
+        printf("VALIDADE: %s\n", produto.Data_Validade);
+        *encontrado = 1; // Marca como encontrado
+    }
+}
 
 void BuscarProduto() {
     Sleep(500);
     system("CLS");
-    FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
-    if (arquivo == NULL) {
-        Console(5, 2);
-        printf("\aERRO AO ABRIR O ARQUIVO!\n");
-        return;
-    }
-
-    Mercadoria produto;
     char nome_busca[MAX_NOME];
     int encontrado = 0;
+
     Console(5, 7);
     Ler_String(nome_busca, MAX_NOME, "Digite o nome do produto: ");
 
-    while (fscanf(arquivo, "%d;%[^;];%[^;];%f;%[^;];%d;%[^;]\n", &produto.UID, produto.nome, produto.Grupo, &produto.preco, produto.Medida, &produto.QNT_Estoque, produto.Data_Validade) != EOF) {
-        if (strstr(produto.nome, nome_busca)) {
-            Console(5, 9);
-            printf("PRODUTO ENCONTRADO:\n");
-            printf("ID: %d\n", produto.UID);
-            printf("NOME: %s\n", produto.nome);
-            printf("CATEGORIA: %s\n", produto.Grupo);
-            printf("PREÇO: R$ %.2f\n", produto.preco);
-            printf("UNIDADE DE MEDIDA: %s\n", produto.Medida);
-            printf("ESTOQUE: %d\n", produto.QNT_Estoque);
-            printf("VALIDADE: %s\n", produto.Data_Validade);
-            encontrado = 1;
-            break; // Produto encontrado, sair do loop
-        }
-    }
+    char* dados[] = {nome_busca, (char*)&encontrado};
+    readCSV(ARQUIVO_ESTOQUE, processarProduto, dados);
 
     if (!encontrado) {
         Console(5, 2);
@@ -42,8 +54,6 @@ void BuscarProduto() {
         system("CLS");
         EntradaMercadoria();
     }
-
-    fclose(arquivo);
 }
 
 void leituraTodosProdutos(char** campos, int num_campos) {

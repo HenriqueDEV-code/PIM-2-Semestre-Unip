@@ -50,7 +50,7 @@ int MenuDeGestaoHortifrut() {
         while (1) {
             int tecla = getch();
 
-            if (tecla == 13) {
+            if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 0) exit(0);
                 break;

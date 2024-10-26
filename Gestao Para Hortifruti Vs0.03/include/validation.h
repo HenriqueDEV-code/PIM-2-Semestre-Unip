@@ -6,6 +6,5 @@
 #define MAX_PRODUCTS 100
 
 int ValidateProductFields(Mercadoria *mercadorias);
-int ValidateDate(const char* data);
 
 #endif
