@@ -14,6 +14,7 @@ void ExibirMenu() {
     borda(120, 30);
     borda(120, 5);
     borda(120, 11);
+    borda(120, 28);
     Console(116, 1);
     printf("❌");
     Console(2, 1);
@@ -21,6 +22,9 @@ void ExibirMenu() {
     printf("\033[33m▒█▀▀▀█ ▀█▀ ▒█▀▀▀█ ▀▀█▀▀ ▒█▀▀▀ ▒█▀▄▀█ ░█▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▒█▀▀▄ ░█▀▀█ ▒█▀▀▀█ ▀▀█▀▀ ▒█▀▀█ ▒█▀▀▀█"); Console(2, 2);
     printf("░▀▀▀▄▄ ▒█░ ░▀▀▀▄▄ ░▒█░░ ▒█▀▀▀ ▒█▒█▒█ ▒█▄▄█ 　 ▒█░▒█ ▒█▀▀▀ 　 ▒█░░░ ▒█▄▄█ ▒█░▒█ ▒█▄▄█ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄▀ ▒█░░▒█"); Console(2, 3);
     printf("▒█▄▄▄█ ▄█▄ ▒█▄▄▄█ ░▒█░░ ▒█▄▄▄ ▒█░░▒█ ▒█░▒█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▒█▄▄▀ ▒█░▒█ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ ▒█▄▄▄█\033[0m");
+
+    Console(12, 28);
+    printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e o ❌ para sair ou retornar");
 
     Console(5, 12);
     printf("CADASTRAR PRODUTO");
