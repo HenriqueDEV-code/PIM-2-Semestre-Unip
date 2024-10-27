@@ -85,6 +85,7 @@ void FluxoDeCaixa(void)
 {
      /*
       Front Do fluxo de caixa  
+      dps add as funcoes 
     */
     
     int linha, coluna, tecla, escolha;
