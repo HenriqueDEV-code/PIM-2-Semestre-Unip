@@ -52,6 +52,7 @@ int MenuDeGestaoHortifrut() {
 
             if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
+                if (escolha == 2) FluxoDeCaixa();
                 if (escolha == 0) exit(0);
                 break;
             }
@@ -72,4 +73,40 @@ int MenuDeGestaoHortifrut() {
             }
         }
     } while (1);
+}
+
+
+
+void FluxoDeCaixa(void)
+{
+     /*
+      Front Do fluxo de caixa  
+    */
+    
+    int linha, coluna, tecla, escolha;
+
+  do
+  {
+    Sleep(2);
+        system("CLS");
+        borda(120, 30);
+        borda(120, 5);
+        borda(120, 28);
+        Console(116, 1);
+        printf("❌");
+        Console(10,1);
+        printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ▀▄▒▄▀ ▒█▀▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
+        Console(10,2);
+        printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ░▒█░░ ▒█░░▒█ 　 ▒█░▒█ ▒█▀▀▀ 　 ▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
+        Console(10,3);
+        printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█");
+
+
+  } while (1);
+  
+ 
+   
+   
+
+
 }
