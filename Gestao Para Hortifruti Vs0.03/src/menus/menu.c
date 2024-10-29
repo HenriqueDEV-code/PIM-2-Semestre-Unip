@@ -123,7 +123,7 @@ void FluxoDeCaixa(void)
       linha = 7;
       coluna = 32;
       Console(coluna, linha);
-      printf("\033[34m➤\033[0m");
+      printf("\033[34m \033[0m");
 
       while (1)
       {
@@ -131,7 +131,7 @@ void FluxoDeCaixa(void)
 
           tecla = getch();
           
-          if(escolha == ENTER)
+          if(escolha == 13)
           {
            if(escolha == 1) break; /* Coloquei break ate criar a funcao */
            if (escolha == 2) break;
@@ -143,7 +143,7 @@ void FluxoDeCaixa(void)
           if(tecla == 72 || tecla == 80)
           {
             Console(coluna, linha);
-            printf(" ");
+            printf("\033[34m \033[0m");
 
             if(tecla == 72) escolha--;
             else if(tecla == 80) escolha++;
@@ -159,6 +159,8 @@ void FluxoDeCaixa(void)
          else if (escolha == 3) { coluna = 17; linha = 11; }
          else if (escolha == 4) { coluna = 22; linha = 13; }
        }
+        Console(coluna, linha);
+        printf("\033[34m \033[0m");
     }while (1);
 } 
 
