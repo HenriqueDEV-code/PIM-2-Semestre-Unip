@@ -84,8 +84,9 @@ int MenuDeGestaoHortifrut() {
 int FluxoDeCaixa()
 {
      /*
-      Front Do fluxo de caixa  
-      dps add as funcoes 
+      Front Do fluxo de caixa 
+      funcao responsavel por fornecer um visual mais amigavel para o usuario *Funcionario-caixa* para que 
+      consiga trabalhar da melhor forma possivel
     */
     int escolha, linha, coluna, tecla;
     Sleep(10);
@@ -96,6 +97,7 @@ int FluxoDeCaixa()
     borda(120,28);
 
     do{
+        // primeiro do para mostrar as informacoes do front de caixa 
         Console(114,2);
         printf("❌");
         Console(3,2);
@@ -138,7 +140,7 @@ int FluxoDeCaixa()
                 Console(coluna, linha);
                 printf(" ");
 
-                if (tecla == 72) escolha++;
+                if (tecla == 77) escolha++;
                 else if (tecla == 75) escolha--;
 
                 if (escolha < 0) escolha = 3;
