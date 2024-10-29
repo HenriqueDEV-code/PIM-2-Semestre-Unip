@@ -87,81 +87,73 @@ void FluxoDeCaixa(void)
       Front Do fluxo de caixa  
       dps add as funcoes 
     */
-    
-    int linha, coluna, tecla, escolha;
+    int escolha, linha, coluna;
+    Sleep(10);
+    system("CLS");
+    borda(120,30);
+    borda(120,7);
+    borda(33,30);
+    borda(120,28);
 
-  
-   
-      Sleep(10);
-      system("CLS");
-      Borda(120, 30);
+    do{
+        Console(114,2);
+        printf("❌");
+        Console(3,2);
+        printf("ＣＡＩＸＡ－ＶＥＮＤＡＳ");
 
-   do
-   {
-	   Console(114, 2);
-	   printf("❌"); //0
-	   Console(3, 2);
-	   printf("ＣＡＩＸＡ－ＶＥＮＤＡＳ");
-
-
-	   Console(3, 5);
-	   printf("C̲O̲D̲I̲G̲O̲: ");
-	   Console(40, 5);
-	   printf("Q̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: ");
-	   Console(77, 5);
-	   printf("T̲O̲T̲A̲L̲ I̲T̲E̲M̲: ");
-
-	   borda(120, 7);
-	   borda(33, 30);
-	   Console(57, 8);
-	   printf("H̲I̲S̲T̲O̲R̲I̲C̲O̲ D̲E̲ C̲O̲M̲P̲R̲A̲S̲");
-	   borda(120, 28);
-	   Console(18, 28);
-	   printf("Usar -> " "\033[31m← →\033[0m" " para se guiar no menu. O" "\033[32m ENTER \033[0m" "para confirmar e o ❌ para sair ou retorna");
-	   escolha = 1;
-	   linha = 5;
-	   coluna = 17;
-	   Console(coluna, linha);
-	   printf(" ");
+        Console(3, 5);
+        printf("C̲O̲D̲I̲G̲O̲: ");
+        Console(40, 5);
+        printf("Q̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: ");
+        Console(77, 5);
+        printf("T̲O̲T̲A̲L̲ I̲T̲E̲M̲: ");
+        Console(57,8);
+        printf("H̲I̲S̲T̲O̲R̲I̲C̲O̲ D̲E̲ C̲O̲M̲P̲R̲A̲S̲");
+        Console(18,28);
+        printf("Usar -> " "\033[31m← →\033[0m" " para se guiar no menu. O" "\033[32m ENTER \033[0m" "para confirmar e o ❌ para sair ou retorna");
+        escolha = 1;
+        linha = 5;
+        coluna = 17;
+        Console(coluna, linha);
+        printf(" ");
 
 
-	  while (1) // loop direcionar 
-	  {
-		setvbuf(stdin, NULL, _IONBF, 0); // Limpar o buffer de entrada
-		tecla = _getch();
+        while(1)
+        {
+            int tecla;
+            setvbuf(stdin, NULL, _IONBF,0);
+            
+            tecla = _getch();
 
+            if(tecla == ENTER)
+            {
+                if (escolha == 1) { /* Codigo para receber valores  #Codigo*/}
+                if (escolha == 2) { /* Codigo para receber valores  #Quantidade*/}
+                if (escolha == 3) { /* Codigo para receber valores  #Total Item*/}
+                if (escolha == 0) { return MenuDeGestaoHortifrut(); }
+            }
 
-		  if (tecla == 13)
-		  {
-			  if (escolha == 1) { ; /*entrada de valores*/ }
-			  if (escolha == 2) { ; /*entrada de valores*/}
-			  if (escolha == 0) return MenuDeGestaoHortifrut();
-			  break;
-		   }
+            if (tecla == 77 || tecla == 80)
+            {
+                Console(coluna, linha);
+                printf(" ");
 
-		  if (tecla == 77 || tecla == 75)
-		  {
-			  Console(coluna, linha);
-			  printf(" "); // Apagar seta assim que mover
+                if (tecla == 77) escolha++;
+                else if (tecla == 75) escolha--;
 
-			  if (tecla == 77) escolha++;
-			  else if (tecla == 75) escolha--;
-			  // limitador
-			  if (escolha < 0) escolha = 2;
-			  else if (escolha > 2) escolha = 0;
+                if (escolha < 0) escolha 3;
+                else if (escolha > 3) escolha = 0;
+                 
 
-			  if (escolha == 0) { coluna = 110; linha = 2; }
-			  else if (escolha == 1) { coluna = 17; linha = 5; }
-			  else if (escolha == 2) { coluna = 61; linha = 5; }
-
-			  Console(coluna, linha);
-			  printf(" ");
-
-		    }
-      }
-
-	}while (1);
-
+                 if (escolha == 0) { coluna = 110; linha = 2; }
+                 else if (escolha == 1) { coluna = 17; linha = 5; }
+                 else if (escolha == 2) { coluna = 61; linha = 5; }
+                 else if (escolha == 3) { coluna = 99; linha = 5; }
+                 Console(coluna, linha);
+                 printf(" ");
+            }
+        }
+    }while(1);
 } 
 
 
