@@ -81,7 +81,7 @@ int MenuDeGestaoHortifrut() {
 
 
 
-void FluxoDeCaixa(void)
+int FluxoDeCaixa(void)
 {
      /*
       Front Do fluxo de caixa  
