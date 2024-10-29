@@ -90,79 +90,80 @@ void FluxoDeCaixa(void)
     
     int linha, coluna, tecla, escolha;
 
-  do
-  {
+  
    
-        Sleep(2);
-        system("CLS");
-        borda(120, 30);
-        borda(120, 5);
-        borda(120, 28);
-        Console(116, 1);
-        printf("❌");
-        Console(10,1);
-        printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ▀▄▒▄▀ ▒█▀▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
-        Console(10,2);
-        printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ░▒█░░ ▒█░░▒█ 　 ▒█░▒█ ▒█▀▀▀ 　 ▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
-        Console(10,3);
-        printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█");
-        Console(12, 28);
-        printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o ❌ para sair ou retornar");
+      Sleep(10);
+      system("CLS");
+      Borda(120, 30);
+
+   do
+   {
+	   Console(114, 2);
+	   printf("❌"); //0
+	   Console(3, 2);
+	   printf("ＣＡＩＸＡ－ＶＥＮＤＡＳ");
 
 
-        Console(10,7);
-        printf("CODIGO DA MERCADORIA: ");
-        Console(10,9);
-        printf("MERCADORIA: ");
-        Console(10,11);
-        printf("PRECO: ");
-        Console(10,13);
-        printf("QUANTIDADE: ");
-       
-      escolha = 1;
-      linha = 7;
-      coluna = 32;
-      Console(coluna, linha);
-      printf("\033[34m \033[0m");
+	   Console(3, 5);
+	   printf("C̲O̲D̲I̲G̲O̲: ");
+	   Console(40, 5);
+	   printf("Q̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: ");
+	   Console(77, 5);
+	   printf("T̲O̲T̲A̲L̲ I̲T̲E̲M̲: ");
 
-      while (1)
-      {
-          setvbuf(stdin,NULL,_IONBF,0);
-
-          tecla = getch();
-          
-          if(escolha == 13)
-          {
-           if(escolha == 1) break; /* Coloquei break ate criar a funcao */
-           if (escolha == 2) break;
-           if(escolha == 3) break;
-           if(escolha == 4) break;
-           if(escolha == 0) MenuDeGestaoHortifrut();
-           break;
-         }
-          if(tecla == 72 || tecla == 80)
-          {
-            Console(coluna, linha);
-            printf("\033[34m \033[0m");
-
-            if(tecla == 72) escolha--;
-            else if(tecla == 80) escolha++;
+	   borda(120, 7);
+	   borda(33, 30);
+	   Console(57, 8);
+	   printf("H̲I̲S̲T̲O̲R̲I̲C̲O̲ D̲E̲ C̲O̲M̲P̲R̲A̲S̲");
+	   borda(120, 28);
+	   Console(18, 28);
+	   printf("Usar -> " "\033[31m← →\033[0m" " para se guiar no menu. O" "\033[32m ENTER \033[0m" "para confirmar e o ❌ para sair ou retorna");
+	   escolha = 1;
+	   linha = 5;
+	   coluna = 17;
+	   Console(coluna, linha);
+	   printf(" ");
 
 
-         }
-         if(escolha < 0) escolha = 4;
-         else if(escolha > 4) escolha = 0;
+	  while (1) // loop direcionar 
+	  {
+		setvbuf(stdin, NULL, _IONBF, 0); // Limpar o buffer de entrada
+		tecla = _getch();
 
-         if (escolha == 0) { coluna = 115; linha = 1; }
-         else if (escolha == 1) { coluna = 32; linha = 7; }
-         else if (escolha == 2) { coluna = 22; linha = 9; }
-         else if (escolha == 3) { coluna = 17; linha = 11; }
-         else if (escolha == 4) { coluna = 22; linha = 13; }
-       }
-        Console(coluna, linha);
-        printf("\033[34m \033[0m");
-    }while (1);
+
+		  if (tecla == 13)
+		  {
+			  if (escolha == 1) { ; /*entrada de valores*/ }
+			  if (escolha == 2) { ; /*entrada de valores*/}
+			  if (escolha == 0) return MenuDeGestaoHortifrut();
+			  break;
+		   }
+
+		  if (tecla == 77 || tecla == 75)
+		  {
+			  Console(coluna, linha);
+			  printf(" "); // Apagar seta assim que mover
+
+			  if (tecla == 77) escolha++;
+			  else if (tecla == 75) escolha--;
+			  // limitador
+			  if (escolha < 0) escolha = 2;
+			  else if (escolha > 2) escolha = 0;
+
+			  if (escolha == 0) { coluna = 110; linha = 2; }
+			  else if (escolha == 1) { coluna = 17; linha = 5; }
+			  else if (escolha == 2) { coluna = 61; linha = 5; }
+
+			  Console(coluna, linha);
+			  printf(" ");
+
+		    }
+      }
+
+	}while (1);
+
 } 
+
 
  
  
