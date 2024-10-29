@@ -139,7 +139,7 @@ int FluxoDeCaixa(void)
                 printf(" ");
 
                 if (tecla == 77) escolha++;
-                else if (tecla == 75) escolha--;
+                else if (tecla == 80) escolha--;
 
                 if (escolha < 0) escolha = 3;
                 else if (escolha > 3) escolha = 0;
