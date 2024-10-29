@@ -133,12 +133,12 @@ int FluxoDeCaixa(void)
                 if (escolha == 0) { return MenuDeGestaoHortifrut(); }
             }
 
-            if (tecla == 77 || tecla == 80)
+            if (tecla == 72 || tecla == 80)
             {
                 Console(coluna, linha);
                 printf(" ");
 
-                if (tecla == 77) escolha++;
+                if (tecla == 72) escolha++;
                 else if (tecla == 80) escolha--;
 
                 if (escolha < 0) escolha = 3;
