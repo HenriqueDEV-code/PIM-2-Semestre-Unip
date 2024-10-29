@@ -141,7 +141,7 @@ void FluxoDeCaixa(void)
                 if (tecla == 77) escolha++;
                 else if (tecla == 75) escolha--;
 
-                if (escolha < 0) escolha 3;
+                if (escolha < 0) escolha = 3;
                 else if (escolha > 3) escolha = 0;
                  
 
