@@ -123,7 +123,7 @@ void FluxoDeCaixa(void)
       linha = 7;
       coluna = 32;
       Console(coluna, linha);
-      printf(" ");
+      printf("\033[34m➤\033[0m");
 
       while (1)
       {
@@ -137,7 +137,7 @@ void FluxoDeCaixa(void)
            if (escolha == 2) break;
            if(escolha == 3) break;
            if(escolha == 4) break;
-           if(escolha == 0) exit(0);
+           if(escolha == 0) MenuDeGestaoHortifrut();
            break;
          }
           if(tecla == 72 || tecla == 80)
