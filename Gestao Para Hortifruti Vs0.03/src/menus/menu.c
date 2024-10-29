@@ -81,13 +81,13 @@ int MenuDeGestaoHortifrut() {
 
 
 
-int FluxoDeCaixa(void)
+int FluxoDeCaixa()
 {
      /*
       Front Do fluxo de caixa  
       dps add as funcoes 
     */
-    int escolha, linha, coluna;
+    int escolha, linha, coluna, tecla;
     Sleep(10);
     system("CLS");
     borda(120,30);
@@ -120,10 +120,10 @@ int FluxoDeCaixa(void)
 
         while(1)
         {
-            int tecla;
+            
             setvbuf(stdin, NULL, _IONBF,0);
             
-            tecla = _getch();
+            tecla = getch();
 
             if(tecla == ENTER)
             {
