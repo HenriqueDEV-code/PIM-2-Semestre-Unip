@@ -165,6 +165,7 @@ void RelatorioDeSistema()
     system("CLS");
     borda(120,30);
     borda(120,28); 
+    borda(120, 7);
    int tecla;
     do
     {
@@ -177,10 +178,21 @@ void RelatorioDeSistema()
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█\033[0m");
         Console(44,28);
         printf("Clica no " "\033[32mESC\033[0m" " para sair do relatorio");
-        scanf("%d", &tecla);
         
-
+        
+          
         /* Codigo do relatorio */
+
+        setvbuf(stdin, NULL, _IONBF,0);
+            
+            tecla = getch();
+
+         if(tecla == 27)
+         {
+            return MenuDeGestaoHortifrut();
+         }
+
+
 
     } while (1); // fim do
     
