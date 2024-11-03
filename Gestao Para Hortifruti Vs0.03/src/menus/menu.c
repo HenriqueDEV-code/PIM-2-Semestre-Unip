@@ -175,9 +175,9 @@ void RelatorioDeSistema()
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
         Console(20,4);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");
-        Console(18,28);
-        printf("Clica no " "\033[m32ESC\033[m0" " para sair do relatorio");
-     scanf("%d", &tecla);
+        Console(40,28);
+        printf("Clica no " "\033[32mESC\033[0m" " para sair do relatorio");
+        scanf("%d", &tecla);
        
 
     } while (1); // fim do
