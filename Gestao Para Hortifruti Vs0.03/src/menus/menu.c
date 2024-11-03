@@ -169,13 +169,13 @@ void RelatorioDeSistema()
     do
     {
         
-        Console(20,2);
+        Console(48,2);
         printf("▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
-        Console(20,3);
+        Console(48,3);
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
-        Console(20,4);
+        Console(48,4);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");
-        Console(40,28);
+        Console(48,28);
         printf("Clica no " "\033[32mESC\033[0m" " para sair do relatorio");
         scanf("%d", &tecla);
        
