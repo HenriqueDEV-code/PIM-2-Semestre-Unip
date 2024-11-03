@@ -170,8 +170,7 @@ void RelatorioDeSistema()
    int tecla;
     do
     {
-        Console(114,2);
-        printf("❌");
+        
         Console(5,1);
         printf("▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
         Console(5,2);
