@@ -178,10 +178,11 @@ int RelatorioDeSistema()
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");Console(10,3);
 
        break;
+       
 
     } while (1); // fim do
     
-
+  return 0;
 
 }//fim funcao
  
