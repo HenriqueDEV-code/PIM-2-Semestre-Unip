@@ -177,26 +177,24 @@ void RelatorioDeSistema()
         Console(35,4);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█\033[0m");
         Console(44,28);
-        printf("Clica no " "\033[32mESC\033[0m" " para sair do relatorio");
+        printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
         
         
           
         /* Codigo do relatorio */
 
-        setvbuf(stdin, NULL, _IONBF,0);
+        
             
-            tecla = getch();
+            
 
-         if(tecla == 27)
-         {
-            return MenuDeGestaoHortifrut();
-         }
+         
+        
 
-
-
-    } while (1); // fim do
+         setvbuf(stdin, NULL, _IONBF,0);
+         tecla = getch();
+    } while (tecla != 27); // fim do
     
-
+   return MenuDeGestaoHortifrut();
 
 }//fim funcao
  
