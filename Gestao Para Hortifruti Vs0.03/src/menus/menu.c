@@ -222,7 +222,7 @@ void QUEMSOMOS(void)
         printf("░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░░▒█ 　 ▒█▄▄▄█ ▒█▄▄▄█ ▒█░░▒█ ▒█▄▄▄█ ▒█▄▄▄█\033[0m");
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
-        Console(35, 26);
+        Console(44, 27);
         printf("\033[36m𝕮𝖔𝖓𝖓𝖊𝖈𝖙𝖎𝖔𝖓 𝖆𝖓𝖉 𝕾𝖔𝖑𝖚𝖙𝖎𝖔𝖓 ©");
         
           
