@@ -101,16 +101,16 @@ int FluxoDeCaixa()
         Console(114,2);
         printf("❌");
         Console(3,2);
-        printf("ＣＡＩＸＡ－ＶＥＮＤＡＳ");
+        printf("\033[33mＣＡＩＸＡ－ＶＥＮＤＡＳ\033[0m");
 
         Console(3, 5);
-        printf("C̲O̲D̲I̲G̲O̲: ");
+        printf("\033[35mC̲O̲D̲I̲G̲O̲: \033[0m");
         Console(40, 5);
-        printf("Q̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: ");
+        printf("\033[35mQ̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: \033[0m");
         Console(77, 5);
-        printf("T̲O̲T̲A̲L̲ I̲T̲E̲M̲: ");
+        printf("\033[35mT̲O̲T̲A̲L̲ I̲T̲E̲M̲: \033[0m");
         Console(57,8);
-        printf("H̲I̲S̲T̲O̲R̲I̲C̲O̲ D̲E̲ C̲O̲M̲P̲R̲A̲S̲");
+        printf("\033[35mH̲I̲S̲T̲O̲R̲I̲C̲O̲ D̲E̲ C̲O̲M̲P̲R̲A̲S̲\033[0m");
         Console(18,28);
         printf("Usar -> " "\033[31m← →\033[0m" " para se guiar no menu. O" "\033[32m ENTER \033[0m" "para confirmar e o ❌ para sair ou retorna");
         escolha = 1;
@@ -169,16 +169,18 @@ void RelatorioDeSistema()
     do
     {
         
-        Console(48,2);
-        printf("▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
-        Console(48,3);
+        Console(44,2);
+        printf("\033[33m▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
+        Console(44,3);
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
-        Console(48,4);
-        printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");
-        Console(48,28);
+        Console(44,4);
+        printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█\033[0m");
+        Console(44,28);
         printf("Clica no " "\033[32mESC\033[0m" " para sair do relatorio");
         scanf("%d", &tecla);
-       
+        
+
+        /* Codigo do relatorio */
 
     } while (1); // fim do
     
