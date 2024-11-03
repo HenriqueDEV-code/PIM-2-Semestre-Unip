@@ -23,5 +23,5 @@ void readCSV(const char* nome_arquivo, void (*processar_linha)(char** campos, in
 void EntradaMercadoria(void);
 int FluxoDeCaixa(void);
 void RelatorioDeSistema(void);
-
+void QUEMSOMOS(void);
 #endif
