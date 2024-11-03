@@ -167,7 +167,7 @@ void RelatorioDeSistema()
     borda(120,7);
     borda(33,30);
     borda(120,28); 
-
+   int tecla;
     do
     {
         Console(114,2);
@@ -177,7 +177,7 @@ void RelatorioDeSistema()
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");Console(10,2);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");Console(10,3);
 
-       break;
+     scanf("%d", &tecla);
        
 
     } while (1); // fim do
