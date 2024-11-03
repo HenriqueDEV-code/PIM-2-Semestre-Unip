@@ -164,18 +164,16 @@ void RelatorioDeSistema()
     Sleep(10);
     system("CLS");
     borda(120,30);
-    borda(120,7);
-    borda(33,30);
     borda(120,28); 
    int tecla;
     do
     {
         
-        Console(5,1);
+        Console(10,2);
         printf("▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
-        Console(5,2);
+        Console(10,3);
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
-        Console(5,3);
+        Console(10,4);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█");
 
      scanf("%d", &tecla);
