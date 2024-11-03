@@ -182,7 +182,7 @@ void RelatorioDeSistema()
 
     } while (1); // fim do
     
-  return 0;
+
 
 }//fim funcao
  
