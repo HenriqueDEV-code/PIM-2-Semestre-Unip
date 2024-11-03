@@ -54,7 +54,7 @@ int MenuDeGestaoHortifrut() {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 2) FluxoDeCaixa();
                 if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
-                if (escolha == 4) break;
+                if (escolha == 4) QUEMSOMOS();
                 if (escolha == 5) break;
                 if (escolha == 6) break;
                 if (escolha == 0) exit(0);
