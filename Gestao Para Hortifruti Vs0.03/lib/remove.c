@@ -5,7 +5,7 @@
 
 void verificarProduto(char** campos, int num_campos, void* dados_ptr) {
     if (num_campos != 7) {
-        printf("Linha inválida\n");
+        printf("\033[31mLinha inválida\n\033[0m");
         return;
     }
 
@@ -37,13 +37,13 @@ void ExcluirProduto() {
     FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
     if (arquivo == NULL) {
         Console(5, 2);
-        printf("\aERRO AO ABRIR O ARQUIVO❗\n");
+        printf("\a\033[31mERRO AO ABRIR O ARQUIVO❗\033[0m\n");
         return;
     }
     FILE* temp = fopen("temp.csv", "w");
     if (temp == NULL) {
         Console(36, 2);
-        printf("ERRO AO CRIAR ARQUIVO TEMPORARIO❗\n");
+        printf("\033[31mERRO AO CRIAR ARQUIVO TEMPORARIO❗\033[0m\n");
         fclose(arquivo);
         return;
     }
@@ -56,7 +56,7 @@ void ExcluirProduto() {
 
     if (!produtoExiste(id_produto)) {
         Console(5, 2);
-        printf("PRODUTO NÃO ENCONTRADO ❗\n");
+        printf("\033[31mPRODUTO NÃO ENCONTRADO ❗\033[0m\n");
         Sleep(500);
         system("CLS");
         fclose(arquivo);
@@ -78,7 +78,7 @@ void ExcluirProduto() {
     rename("temp.csv", ARQUIVO_ESTOQUE);
 
     Console(5, 2);
-    printf("PRODUTO EXCLUIDO COM SUCESSO❗\n");
+    printf("\033[32mPRODUTO EXCLUIDO COM SUCESSO❗\033[0m\n");
     Sleep(500);
     system("CLS");
     EntradaMercadoria();
