@@ -53,7 +53,7 @@ int MenuDeGestaoHortifrut() {
             if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 2) FluxoDeCaixa();
-                if (escolha == 3) break;  /* Coloquei break ate criar a funcao */
+                if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
                 if (escolha == 4) break;
                 if (escolha == 5) break;
                 if (escolha == 6) break;
@@ -158,7 +158,7 @@ int FluxoDeCaixa()
     }while(1);
 } 
 
-int RelatorioDeSistema()
+void RelatorioDeSistema()
 {
    
     Sleep(10);
