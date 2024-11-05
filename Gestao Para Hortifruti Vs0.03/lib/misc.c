@@ -101,7 +101,6 @@ void Ler_Int(int* valor, const char* mensagem)
 		Limpar_Buffer();
 		Sleep(500);
 		system("CLS");
-		// EntradaMercadoria();
 	}
 	Limpar_Buffer();
 }
