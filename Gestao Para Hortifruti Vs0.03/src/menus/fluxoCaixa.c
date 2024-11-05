@@ -5,8 +5,7 @@
 #include "../../include/menu.h"
 #include "../../include/misc.h"
 
-void FluxoDeCaixa(void)
-{
+void FluxoDeCaixa() {
     int linha, coluna, tecla, escolha;
 
     do

@@ -1,3 +1,4 @@
+#include <time.h>
 #include "../include/misc.h"
 
 #define MAX_LINHA  1024
@@ -97,7 +98,7 @@ void Ler_Int(int* valor, const char* mensagem)
 	while (scanf("%d", valor) != 1 || *valor < 0)
 	{
 		Console(5, 2);
-		printf("\aENTRADA INVALIDA❗ TENTE NOVAMENTE.");
+		printf("\a\033[31mENTRADA INVALIDA❗ TENTE NOVAMENTE.\033[0m");
 		Limpar_Buffer();
 		Sleep(500);
 		system("CLS");
@@ -112,7 +113,7 @@ void Ler_Float(float* valor, const char* mensagem)
 	while (scanf("%f", valor) != 1 || *valor < 0)
 	{
 		Console(5, 2);
-		printf("\aENTRADA INVALIDA❗ TENTE NOVAMENTE.");
+		printf("\a\033[31mENTRADA INVALIDA❗ TENTE NOVAMENTE.\033[0m");
 		Limpar_Buffer();
 		Sleep(500);
 		system("CLS");
@@ -146,7 +147,7 @@ void Ler_Unidade_Medida(char* medida, int max_tamanho, const char* mensagem)
 		else
 		{
 			Console(5, 2);
-			printf("\aENTRADA INVALIDA❗ POR FAVOR, INSIRA UN, CX OU KG.");
+			printf("\a\033[31mENTRADA INVALIDA❗ POR FAVOR, INSIRA UN, CX OU KG.\033[0m");
 			Sleep(500);
 			system("CLS");
 			return EntradaMercadoria();
@@ -166,10 +167,17 @@ int Validade_Data(const char* data) {
 	return 1;
 }
 
+// Função para obter a data atual no formato YYYY-MM-DD
+void obterDataAtual(char* data) {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(data, "%04d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
+}
+
 void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int num_campos)) {
     FILE* arquivo = fopen(nome_arquivo, "r");
     if (arquivo == NULL) {
-        printf("\aERRO AO ABRIR O ARQUIVO!\n");
+        printf("\a\033[31mERRO AO ABRIR O ARQUIVO❗\033[0m\n");
         return;
     }
 

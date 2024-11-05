@@ -28,7 +28,7 @@ int MenuDeGestaoHortifrut() {
         printf("▒█▄▄█ ▒█▄▄▄ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ ▒█▄▄▄█ 　 ▒█░▒█ ▒█▄▄▄█ ▒█░▒█ ░▒█░░ ▄█▄ ▒█░░░ ▒█░▒█ ░▀▄▄▀ ░▒█░░ ▄█▄\033[0m");
 
         Console(11, 11); printf("\033[35mCADASTRO 💻");
-        Console(11, 13); printf("VENDAS 💳");
+        Console(11, 13); printf("FLUXO DE CAIXA 💳");
         Console(11, 15); printf("RELATORIO GERAL DO SISTEMA 📊");
         Console(11, 17); printf("QUEM SOMOS 📎");
         Console(11, 19); printf("SUGESTOES 🗣");
@@ -53,8 +53,8 @@ int MenuDeGestaoHortifrut() {
             if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 2) FluxoDeCaixa();
-                if (escolha == 3) break;  /* Coloquei break ate criar a funcao */
-                if (escolha == 4) break;
+                if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
+                if (escolha == 4) QUEMSOMOS();
                 if (escolha == 5) break;
                 if (escolha == 6) break;
                 if (escolha == 0) exit(0);
@@ -77,4 +77,60 @@ int MenuDeGestaoHortifrut() {
             }
         }
     } while (1);
+}
+
+void RelatorioDeSistema() {
+    int tecla;
+   
+    Sleep(10);
+    system("CLS");
+    borda(120,30);
+    borda(120,28); 
+    borda(120, 7);
+    do {
+        
+        Console(35,2);
+        printf("\033[33m▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
+        Console(35,3);
+        printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
+        Console(35,4);
+        printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█\033[0m");
+        Console(44,28);
+        printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
+        
+        setvbuf(stdin, NULL, _IONBF,0);
+        tecla = getch();
+    } while (tecla != 27); // fim do
+    
+   return MenuDeGestaoHortifrut();
+
+}//fim funcao
+
+void QUEMSOMOS(void)
+{
+    Sleep(10);
+    system("CLS");
+    borda(120,30);
+    borda(120,28); 
+    borda(120, 7);
+
+    int tecla;
+    do
+    {
+        
+        Console(35,2);
+        printf("\033[33m▒█▀▀█ ▒█░▒█ ▒█▀▀▀ ▒█▀▄▀█ 　 ▒█▀▀▀█ ▒█▀▀▀█ ▒█▀▄▀█ ▒█▀▀▀█ ▒█▀▀▀█ ");
+        Console(35,3);
+        printf("▒█░▒█ ▒█░▒█ ▒█▀▀▀ ▒█▒█▒█ 　 ░▀▀▀▄▄ ▒█░░▒█ ▒█▒█▒█ ▒█░░▒█ ░▀▀▀▄▄");
+        Console(35,4);
+        printf("░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░░▒█ 　 ▒█▄▄▄█ ▒█▄▄▄█ ▒█░░▒█ ▒█▄▄▄█ ▒█▄▄▄█\033[0m");
+        Console(44,28);
+        printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
+
+         setvbuf(stdin, NULL, _IONBF,0);
+         tecla = getch();
+    } while (tecla != 27); // fim do
+
+        
+    return MenuDeGestaoHortifrut();
 }

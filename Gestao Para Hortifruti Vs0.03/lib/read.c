@@ -49,7 +49,7 @@ void BuscarProduto() {
 
     if (!encontrado) {
         Console(5, 2);
-        printf("PRODUTO NÃO ENCONTRADO ❗\n");
+        printf("\033[31m PRODUTO NÃO ENCONTRADO ❗\033[0m\n");
         Sleep(500);
         system("CLS");
         EntradaMercadoria();
@@ -58,7 +58,7 @@ void BuscarProduto() {
 
 void leituraTodosProdutos(char** campos, int num_campos) {
     if (num_campos != 7) {
-        printf("Linha inválida\n");
+        printf("\033[31m Linha inválida\033[0m\n");
         return;
     }
 
@@ -81,7 +81,7 @@ void leituraTodosProdutos(char** campos, int num_campos) {
     printf("VALIDADE: %s\n", data_validade);
     printf("-----------------------------------------\n");
 
-    printf("Pressione Enter para continuar...\n");
+    printf("\033[32mPressione Enter para continuar...\n\033[0m");
     getchar();
 }
 
@@ -89,7 +89,7 @@ void ListarProduto() {
     Sleep(500);
     system("CLS");
     Console(5, 9);
-    printf("Lista de produtos cadastrados:\n");
+    printf("\033[32mLista de produtos cadastrados:\n\033[0m");
 
     readCSV(ARQUIVO_ESTOQUE, leituraTodosProdutos);
 }

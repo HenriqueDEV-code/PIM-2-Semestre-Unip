@@ -9,14 +9,14 @@ void EditeProduto() {
 	FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
 	if (arquivo == NULL) {
 		Console(5, 2);
-		printf("\aERRO AO ABRIR O ARQUIVO❗\n");
+		printf("\a\033[31mERRO AO ABRIR O ARQUIVO❗\033[0m\n");
 		return;
 	}
 
 	FILE* temp = fopen("temp.csv", "w");
 	if (temp == NULL) {
 		Console(36, 2);
-		printf("ERRO AO CRIAR ARQUIVO TEMPORARIO❗\n");
+		printf("\033[31mERRO AO CRIAR ARQUIVO TEMPORARIO❗\033[0m\n");
 		fclose(arquivo);
 		return;
 	}
@@ -58,11 +58,11 @@ void EditeProduto() {
 
 	if (encontrado) {
 		Console(5, 2);
-		printf("Produto editado com sucesso!\n");
+		printf("\033[32mProduto editado com sucesso!\033[0m\n");
 	}
 	else {
 		Console(5, 2);
-		printf("Produto nao encontrado!\n");
+		printf("\033[31mProduto nao encontrado!\033[0m\n");
 	}
 	Sleep(1500);
 	EntradaMercadoria();

@@ -27,15 +27,15 @@ void ExibirMenu() {
     printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e o ❌ para sair ou retornar");
 
     Console(5, 12);
-    printf("CADASTRAR PRODUTO");
+    printf("\033[35mCADASTRAR PRODUTO\033[0m");
     Console(5, 14);
-    printf("EDITAR INFORMAÇOES DO PRODUTO");
+    printf("\033[35mEDITAR INFORMAÇOES DO PRODUTO\033[0m");
     Console(5, 16);
-    printf("DELETAR O PRODUTO DO ESTOQUE");
+    printf("\033[35mDELETAR O PRODUTO DO ESTOQUE\033[0m");
     Console(5, 18);
-    printf("BUSCAR PRODUTO NO ESTOQUE");
+    printf("\033[35mBUSCAR PRODUTO NO ESTOQUE\033[0m");
     Console(5, 20);
-    printf("LISTAR TODOS PRODUTOS");
+    printf("\033[35mLISTAR TODOS PRODUTOS\033[0m");
 }
 
 void ProcessarEscolha(int escolha) {

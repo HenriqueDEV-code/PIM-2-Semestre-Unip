@@ -91,13 +91,10 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
     fprintf(arquivo, "\n%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
 }
 
-void fluxoDeVendas(void)
-{
-    char codigo[50]; 
-    int quantidade;
-    float preco; 
-    float total;
+void fluxoDeVendas() {
     int escolha, linha, coluna, tecla;
+    sales vendas;
+    vendas.total = 0;
 
     Sleep(10);
     system("CLS");
@@ -106,8 +103,7 @@ void fluxoDeVendas(void)
     borda(33, 30);
     borda(120, 28);
 
-    do
-    {
+    do {
         // primeiro do para mostrar as informacoes do front de caixa
         Console(114, 2);
         printf("❌");
@@ -131,38 +127,34 @@ void fluxoDeVendas(void)
         Console(coluna, linha);
         printf("➤");
 
-        while (1)
-        {
+        while (1) {
             setvbuf(stdin, NULL, _IONBF, 0);
-
             tecla = getch();
 
-            if (tecla == 13)
-            { // ENTER key
-                switch (escolha)
-                {
+            if (tecla == 13) { // ENTER key
+                switch (escolha) {
                 case 1:
                     Console(17, 5);
                     printf(" ");
                     Console(17, 5);
-                    scanf("%s", codigo);
+                    Ler_Int(&vendas.productCode, "Digite o código do produto:");
                     break;
                 case 2:
                     Console(61, 5);
                     printf(" ");
                     Console(61, 5);
-                    scanf("%d", &quantidade);
+                    Ler_Float(&vendas.quantity, "Digite a quantidade:");
                     break;
                 case 3:
                     Console(99, 5);
                     printf(" ");
                     Console(99, 5);
-                    scanf("%f", &preco);
+                    Ler_Float(&vendas.precoUnitario, "Digite o preço unitário:");
                     break;
                 case 4:
-                    total = quantidade * preco;
+                    vendas.total = vendas.quantity * vendas.precoUnitario;
                     Console(140, 5);
-                    printf("%.2f", total);
+                    printf("%.2f", vendas.total);
                     break;
                 case 0:
                     // Função para sair ou retornar ao menu anterior
@@ -171,8 +163,7 @@ void fluxoDeVendas(void)
                 }
             }
 
-            if (tecla == 77 || tecla == 75)
-            { // Right or Left arrow keys
+            if (tecla == 77 || tecla == 75) { // Right or Left arrow keys
                 Console(coluna, linha);
                 printf(" ");
 
@@ -186,23 +177,16 @@ void fluxoDeVendas(void)
                 else if (escolha > 4)
                     escolha = 1;
 
-                if (escolha == 1)
-                {
+                if (escolha == 1) {
                     coluna = 17;
                     linha = 5;
-                }
-                else if (escolha == 2)
-                {
+                } else if (escolha == 2) {
                     coluna = 61;
                     linha = 5;
-                }
-                else if (escolha == 3)
-                {
+                } else if (escolha == 3) {
                     coluna = 99;
                     linha = 5;
-                }
-                else if (escolha == 4)
-                {
+                } else if (escolha == 4) {
                     coluna = 140;
                     linha = 5;
                 }
