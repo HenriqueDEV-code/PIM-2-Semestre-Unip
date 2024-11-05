@@ -1,0 +1,23 @@
+# Ignore arquivos de configuração do Visual Studio Code
+.vscode/
+
+# Ignore diretórios de build
+Debug/
+x64/
+Gestao Para Hortifruti Vs0.03/Debug/
+Gestao Para Hortifruti Vs0.03/x64/
+Gestao Para Hortifruti Vs0.03/dist/
+
+# Ignore arquivos de build específicos
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+*.recipe
+
+# Ignore arquivos de projeto específicos do Visual Studio
+*.vcxproj.user
+*.vcxproj.filters
