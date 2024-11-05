@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <windows.h>
 #include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 #include "../include/product.h"
 
 void verificarProduto(char** campos, int num_campos, void* dados_ptr) {
@@ -32,9 +35,10 @@ int produtoExiste(int id_produto) {
 }
 
 void ExcluirProduto() {
+    FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
+    
     Sleep(500);
     system("CLS");
-    FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
     if (arquivo == NULL) {
         Console(5, 2);
         printf("\a\033[31mERRO AO ABRIR O ARQUIVO❗\033[0m\n");
@@ -43,7 +47,7 @@ void ExcluirProduto() {
     FILE* temp = fopen("temp.csv", "w");
     if (temp == NULL) {
         Console(36, 2);
-        printf("\033[31mERRO AO CRIAR ARQUIVO TEMPORARIO❗\033[0m\n");
+        printf("ERRO AO CRIAR ARQUIVO TEMPORÁRIO❗\n");
         fclose(arquivo);
         return;
     }
@@ -78,7 +82,7 @@ void ExcluirProduto() {
     rename("temp.csv", ARQUIVO_ESTOQUE);
 
     Console(5, 2);
-    printf("\033[32mPRODUTO EXCLUIDO COM SUCESSO❗\033[0m\n");
+    printf("PRODUTO EXCLUÍDO COM SUCESSO❗\n");
     Sleep(500);
     system("CLS");
     EntradaMercadoria();

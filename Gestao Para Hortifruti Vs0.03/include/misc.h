@@ -20,8 +20,7 @@ void Ler_String(char* str, int max_tamanho, const char* mensagem);
 void Ler_Unidade_Medida(char* medida, int max_tamanho, const char* mensagem);
 void showNotification(LPCWSTR message, UINT iconType);
 void readCSV(const char* nome_arquivo, void (*processar_linha)(char** campos, int num_campos));
-void EntradaMercadoria(void);
-int FluxoDeCaixa(void);
-void RelatorioDeSistema(void);
-void QUEMSOMOS(void);
+void obterDataAtual(char *data);
+
+
 #endif

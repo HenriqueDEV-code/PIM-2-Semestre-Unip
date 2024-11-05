@@ -1,3 +1,4 @@
+#include <time.h>
 #include "../include/misc.h"
 
 #define MAX_LINHA  1024
@@ -101,7 +102,6 @@ void Ler_Int(int* valor, const char* mensagem)
 		Limpar_Buffer();
 		Sleep(500);
 		system("CLS");
-		// EntradaMercadoria();
 	}
 	Limpar_Buffer();
 }
@@ -165,6 +165,13 @@ int Validade_Data(const char* data) {
 		if (!isdigit(data[i])) return 0;
 	}
 	return 1;
+}
+
+// Função para obter a data atual no formato YYYY-MM-DD
+void obterDataAtual(char* data) {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(data, "%04d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
 }
 
 void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int num_campos)) {
