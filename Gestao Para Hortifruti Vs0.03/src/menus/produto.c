@@ -100,6 +100,7 @@ void EntradaMercadoria() {
                 break;
             }
 
+
             if (tecla == 72 || tecla == 80) {
                 Console(coluna, linha);
                 printf(" ");
