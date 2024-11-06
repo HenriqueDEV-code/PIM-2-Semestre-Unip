@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
 #include "../include/product.h"
 
 void processarProduto(char** campos, int num_campos, void* dados_ptr) {
@@ -38,22 +39,80 @@ void processarProduto(char** campos, int num_campos, void* dados_ptr) {
 void BuscarProduto() {
     Sleep(500);
     system("CLS");
-    char nome_busca[MAX_NOME];
+    int id_produto;
+    Mercadoria produto;
     int encontrado = 0;
 
     Console(5, 7);
-    Ler_String(nome_busca, MAX_NOME, "Digite o nome do produto: ");
+    Ler_Int(&id_produto, "Digite o ID do produto: ");
 
-    char* dados[] = {nome_busca, (char*)&encontrado};
-    readCSV(ARQUIVO_ESTOQUE, processarProduto, dados);
+    FILE *arquivo = fopen(ARQUIVO_ESTOQUE, "r");
+    if (arquivo == NULL) {
+        Console(5, 2);
+        printf("\a\033[31mERRO AO ABRIR O ARQUIVO❗\033[0m\n");
+        return;
+    }
 
-    if (!encontrado) {
+    encontrado = BuscarProdutoPorID(arquivo, id_produto, &produto);
+    fclose(arquivo);
+
+    if (encontrado) {
+        printf("-----------------------------------------\n");
+        printf("ID: %d\n", produto.UID);
+        printf("NOME: %s\n", produto.nome);
+        printf("CATEGORIA: %s\n", produto.Grupo);
+        printf("PREÇO: R$ %.2f\n", produto.preco);
+        printf("UNIDADE DE MEDIDA: %s\n", produto.Medida);
+        printf("ESTOQUE: %d\n", produto.QNT_Estoque);
+        printf("VALIDADE: %s\n", produto.Data_Validade);
+        printf("-----------------------------------------\n");
+
+        printf("\033[32mPressione Enter para continuar...\n\033[0m");
+        getchar();
+    } else {
         Console(5, 2);
         printf("\033[31m PRODUTO NÃO ENCONTRADO ❗\033[0m\n");
         Sleep(500);
         system("CLS");
         EntradaMercadoria();
     }
+}
+
+int BuscarProdutoPorID(FILE *arquivo, int id, Mercadoria *produto) {
+    char row[MAXCHAR];
+    char* token;
+
+    while (fgets(row, MAXCHAR, arquivo) != NULL) {
+        // Remover nova linha do final da string, se existir
+        row[strcspn(row, "\n")] = 0;
+
+        token = strtok(row, ";");
+        produto->UID = atoi(token);
+
+        if (produto->UID == id) {
+            token = strtok(NULL, ";");
+            strcpy(produto->nome, token);
+
+            token = strtok(NULL, ";");
+            strcpy(produto->Grupo, token);
+
+            token = strtok(NULL, ";");
+            produto->preco = atof(token);
+
+            token = strtok(NULL, ";");
+            strcpy(produto->Medida, token);
+
+            token = strtok(NULL, ";");
+            produto->QNT_Estoque = atoi(token);
+
+            token = strtok(NULL, "\n");
+            strcpy(produto->Data_Validade, token);
+
+            return 1; // Produto encontrado
+        }
+    }
+
+    return 0; // Produto não encontrado
 }
 
 void leituraTodosProdutos(char** campos, int num_campos) {

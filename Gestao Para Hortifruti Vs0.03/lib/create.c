@@ -18,11 +18,14 @@ void CadastroProduto()
     Console(5, 8);
     Ler_Int(&produto.UID, "Digite o ID do produto: ");
 
-    if ((arquivo = fopen(ARQUIVO_ESTOQUE, "r")) == NULL)
+    if ((arquivo = fopen(ARQUIVO_ESTOQUE, "r")) != NULL)
     {
         if (VerificarIdDuplicado(arquivo, produto.UID))
         {
             showNotification(L"Produto com Id Duplicado", MB_ICONERROR);
+            fclose(arquivo);
+            EntradaMercadoria();
+            return;
         }
         fclose(arquivo);
     }
@@ -55,14 +58,22 @@ void ExibirBordas()
 
 int VerificarIdDuplicado(FILE *arquivo, int id)
 {
-    Mercadoria temp;
-    while (fscanf(arquivo, "%d;%*[^;];%*[^;];%*f;%*[^;];%*d;%*[^;]\n", &temp.UID) != EOF)
-    {
-        if (temp.UID == id)
-        {
+    char row[MAXCHAR];
+    char* token;
+    Mercadoria produto;
+
+    while (fgets(row, MAXCHAR, arquivo) != NULL) {
+        // Remover nova linha do final da string, se existir
+        row[strcspn(row, "\n")] = 0;
+
+        token = strtok(row, ";");
+        produto.UID = atoi(token);
+
+        if (produto.UID == id) {
             return 1;
         }
     }
+    
     return 0;
 }
 
@@ -88,7 +99,16 @@ void ColetarDadosProduto(Mercadoria *produto)
 
 void SalvarProduto(FILE *arquivo, Mercadoria *produto)
 {
-    fprintf(arquivo, "\n%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
+    // Verifica se o arquivo está vazio
+    fseek(arquivo, 0, SEEK_END);
+    long tamanho = ftell(arquivo);
+    if (tamanho == 0) {
+        // Se o arquivo estiver vazio, não adiciona nova linha
+        fprintf(arquivo, "%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
+    } else {
+        // Se o arquivo não estiver vazio, adiciona nova linha antes do produto
+        fprintf(arquivo, "\n%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
+    }
 }
 
 void fluxoDeVendas() {
@@ -131,25 +151,25 @@ void fluxoDeVendas() {
             setvbuf(stdin, NULL, _IONBF, 0);
             tecla = getch();
 
-            if (tecla == 13) { // ENTER key
+            if (tecla == ENTER) {
                 switch (escolha) {
                 case 1:
                     Console(17, 5);
                     printf(" ");
                     Console(17, 5);
-                    Ler_Int(&vendas.productCode, "Digite o código do produto:");
+                    scanf(&vendas.productCode);
                     break;
                 case 2:
                     Console(61, 5);
                     printf(" ");
                     Console(61, 5);
-                    Ler_Float(&vendas.quantity, "Digite a quantidade:");
+                    scanf(&vendas.quantity);
                     break;
                 case 3:
                     Console(99, 5);
                     printf(" ");
                     Console(99, 5);
-                    Ler_Float(&vendas.precoUnitario, "Digite o preço unitário:");
+                    scanf(&vendas.precoUnitario);
                     break;
                 case 4:
                     vendas.total = vendas.quantity * vendas.precoUnitario;
