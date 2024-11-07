@@ -166,9 +166,9 @@ void fluxoDeVendas() {
                     scanf(&vendas.quantity);
                     break;
                 case 3:
-                    Console(99, 5);
+                    Console(106, 5);
                     printf(" ");
-                    Console(99, 5);
+                    Console(106, 5);
                     scanf(&vendas.precoUnitario);
                     break;
                 case 4:
