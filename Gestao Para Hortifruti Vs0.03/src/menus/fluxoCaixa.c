@@ -15,8 +15,6 @@ void FluxoDeCaixa() {
         borda(120, 30);
         borda(120, 5);
         borda(120, 28);
-        Console(116, 1);
-        printf("❌");
         Console(10, 1);
         printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ▀▄▒▄▀ ▒█▀▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
         Console(10, 2);
@@ -24,7 +22,7 @@ void FluxoDeCaixa() {
         Console(10, 3);
         printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█");
         Console(12, 28);
-        printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o ❌ para sair ou retornar");
+        printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o " "\033[34mESC\033[0m" " para sair do relatorio");
 
         Console(10, 7);
         printf("1. VENDA");
@@ -100,5 +98,6 @@ void FluxoDeCaixa() {
             Console(coluna, linha);
             printf("➤");
         }
-    } while (1);
+    } while (tecla != 27);
+    return MenuDeGestaoHortifrut();
 }
