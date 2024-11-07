@@ -5,7 +5,7 @@
 #define VALID 1
 
 int ValidateProductFields(Mercadoria *mercadorias) {
-    if (mercadorias->UID == 0 ||
+    if (mercadorias->UID <= 0 ||
         strlen(mercadorias->nome) == 0 ||
         strlen(mercadorias->Grupo) == 0 ||
         mercadorias->preco == 0 ||
