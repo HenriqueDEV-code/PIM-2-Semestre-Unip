@@ -16,20 +16,20 @@ void FluxoDeCaixa() {
         borda(120, 5);
         borda(120, 28);
         Console(10, 1);
-        printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ▀▄▒▄▀ ▒█▀▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
+        printf("\033[33m▒█▀▀▀ ▒█░░░ ▒█░▒█ ▀▄▒▄▀ ▒█▀▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
         Console(10, 2);
         printf("▒█▀▀▀ ▒█░░░ ▒█░▒█ ░▒█░░ ▒█░░▒█ 　 ▒█░▒█ ▒█▀▀▀ 　 ▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
         Console(10, 3);
-        printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█");
+        printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█\033[0m");
         Console(12, 28);
         printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o " "\033[34mESC\033[0m" " para sair do relatorio");
 
         Console(10, 7);
-        printf("1. VENDA");
+        printf("\033[35m1. VENDA\033[0m");
         Console(10, 9);
-        printf("2. CANCELAR UMA VENDA");
+        printf("\033[35m2. CANCELAR UMA VENDA\033[0m");
         Console(10, 11);
-        printf("3. LISTA DE VENDAS");
+        printf("\033[35m3. LISTA DE VENDAS\033[0m");
 
         escolha = 1;
         linha = 7;
