@@ -102,7 +102,8 @@ void FluxoDeCaixa() {
             tecla = getch();
         }while(tecla != 27);
 
+      return MenuDeGestaoHortifrut();
       
-    } while (tecla != 27);
-    return MenuDeGestaoHortifrut();
+    } while (1);
+    
 }
