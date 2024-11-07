@@ -98,6 +98,9 @@ void RelatorioDeSistema() {
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
         
+
+
+
         setvbuf(stdin, NULL, _IONBF,0);
         tecla = getch();
     } while (tecla != 27); // fim do
@@ -126,6 +129,12 @@ void QUEMSOMOS(void)
         printf("░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░░▒█ 　 ▒█▄▄▄█ ▒█▄▄▄█ ▒█░░▒█ ▒█▄▄▄█ ▒█▄▄▄█\033[0m");
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
+
+
+
+
+
+
 
          setvbuf(stdin, NULL, _IONBF,0);
          tecla = getch();
