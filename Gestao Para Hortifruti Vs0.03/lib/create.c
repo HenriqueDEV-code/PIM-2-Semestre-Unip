@@ -136,7 +136,7 @@ void fluxoDeVendas() {
         printf("\033[35mQ̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: \033[0m");
         Console(77, 5);
         printf("\033[35mP̲R̲E̲C̲O̲ U̲N̲I̲T̲A̲R̲I̲O̲: \033[0m");
-        Console(114, 5);
+        Console(114, 7);
         printf("\033[35mT̲O̲T̲A̲L̲ I̲T̲E̲M̲: \033[0m");
         Console(18, 28);
         printf("Usar -> \033[31m← →\033[0m para se guiar no menu. O \033[32mENTER\033[0m para confirmar e o ❌ para sair ou retornar");
