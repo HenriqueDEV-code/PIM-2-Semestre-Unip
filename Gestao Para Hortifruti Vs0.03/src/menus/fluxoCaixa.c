@@ -36,6 +36,9 @@ void FluxoDeCaixa() {
         coluna = 8;
         Console(coluna, linha);
         printf("➤");
+        
+            setvbuf(stdin, NULL, _IONBF,0);
+            tecla = getch();
 
         do
         {
@@ -98,8 +101,7 @@ void FluxoDeCaixa() {
             Console(coluna, linha);
             printf("➤");
 
-            setvbuf(stdin, NULL, _IONBF,0);
-            tecla = getch();
+           
         }while(tecla != 27);
 
       return MenuDeGestaoHortifrut();
