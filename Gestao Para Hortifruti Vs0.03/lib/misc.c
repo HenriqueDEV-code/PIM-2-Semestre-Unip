@@ -95,7 +95,7 @@ void Limpar_Buffer()
 void Ler_Int(int* valor, const char* mensagem)
 {
 	printf("%s", mensagem);
-	while (scanf("%d", valor) != 1 || *valor < 0)
+	while (scanf("%d", valor) != 1 || *valor <= 0)
 	{
 		Console(5, 2);
 		printf("\a\033[31mENTRADA INVALIDA❗ TENTE NOVAMENTE.\033[0m");
