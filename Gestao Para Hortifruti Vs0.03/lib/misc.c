@@ -106,6 +106,9 @@ void Ler_Int(int* valor, const char* mensagem)
 	Limpar_Buffer();
 }
 
+
+
+
 /* Funcao para ler entrada do tipo float com validação */
 void Ler_Float(float* valor, const char* mensagem)
 {
