@@ -33,7 +33,7 @@ void ExcluirProduto() {
     Mercadoria produto;
     int id_produto = 0, encontrado = 0;
     Console(5, 7);
-    Ler_Int(&id_produto, "Digite o ID do produto que deseja excluir do estoque: ");
+    Ler_Int(&id_produto, "\033[36mDigite o ID do produto que deseja excluir do estoque:\033[0m ");
 
     while (fgets(row, MAXCHAR, arquivo) != NULL) {
         // Remover nova linha do final da string, se existir

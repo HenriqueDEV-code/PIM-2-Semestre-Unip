@@ -30,7 +30,7 @@ void EditeProduto() {
     Mercadoria produto;
     int id_produto = 0, encontrado = 0;
     Console(5, 7);
-    Ler_Int(&id_produto, "Digite o ID do produto que deseja editar: ");
+    Ler_Int(&id_produto, "\033[36mDigite o ID do produto que deseja editar:\033[0m ");
 
     while (fgets(row, MAXCHAR, arquivo) != NULL) {
         // Remover nova linha do final da string, se existir
@@ -60,15 +60,15 @@ void EditeProduto() {
         if (produto.UID == id_produto) {
             encontrado = 1;
             Console(5, 2);
-            printf("Produto encontrado! Atualize os dados:\n");
+            printf("\033[32mProduto encontrado! Atualize os dados:\033[0m\n");
             Console(5, 8);
-            Ler_String(produto.nome, sizeof(produto.nome), "Novo nome: ");
+            Ler_String(produto.nome, sizeof(produto.nome), "\033[36mNovo nome:\033[0m ");
             Console(5, 9);
-            Ler_String(produto.Grupo, sizeof(produto.Grupo), "Nova categoria: ");
+            Ler_String(produto.Grupo, sizeof(produto.Grupo), "\033[36mNova categoria:\033[0m ");
             Console(5, 10);
-            Ler_Float(&produto.preco, "Novo preço: ");
+            Ler_Float(&produto.preco, "\033[36mNovo preço:\033[0m ");
             Console(5, 11);
-            Ler_Int(&produto.QNT_Estoque, "Nova quantidade em estoque: ");
+            Ler_Int(&produto.QNT_Estoque, "\033[36mNova quantidade em estoque:\033[0m ");
 
             // Validação da nova data de validade
             do {
