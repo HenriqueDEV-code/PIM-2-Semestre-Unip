@@ -68,7 +68,7 @@ void BuscarProduto() {
         Console(5, 12);
         printf("\033[36mCATEGORIA:\033[0m %s", produto.Grupo);
         Console(5, 13);
-        printf("\033[36mPREÇO:\033[0m R$ %.2f", produto.preco);
+        printf("\033[36mPREÇO:\033[0m R\033[32m$ %.2f", produto.preco);
         Console(5, 14);
         printf("\033[36mUNIDADE DE MEDIDA:\033[0m %s", produto.Medida);
         Console(5, 15);
