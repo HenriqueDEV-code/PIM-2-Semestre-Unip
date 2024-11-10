@@ -133,7 +133,7 @@ void QUEMSOMOS(void)
          Console(2,8);
          printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
          Console(2,9);
-         prinft("com solucoes eficientes");
+         printf("com solucoes eficientes");
 
 
 
