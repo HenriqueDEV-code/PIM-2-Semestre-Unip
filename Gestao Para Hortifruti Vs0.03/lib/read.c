@@ -59,17 +59,26 @@ void BuscarProduto() {
     fclose(arquivo);
 
     if (encontrado) {
-        printf("-----------------------------------------\n");
-        printf("ID: %d\n", produto.UID);
-        printf("NOME: %s\n", produto.nome);
-        printf("CATEGORIA: %s\n", produto.Grupo);
-        printf("PREÇO: R$ %.2f\n", produto.preco);
-        printf("UNIDADE DE MEDIDA: %s\n", produto.Medida);
-        printf("ESTOQUE: %d\n", produto.QNT_Estoque);
-        printf("VALIDADE: %s\n", produto.Data_Validade);
-        printf("-----------------------------------------\n");
-
-        printf("\033[32mPressione Enter para continuar...\n\033[0m");
+        Console(5, 9);
+        printf("-----------------------------------------");
+        Console(5, 10);
+        printf("ID: %d", produto.UID);
+        Console(5, 11);
+        printf("NOME: %s", produto.nome);
+        Console(5, 12);
+        printf("CATEGORIA: %s", produto.Grupo);
+        Console(5, 13);
+        printf("PREÇO: R$ %.2f", produto.preco);
+        Console(5, 14);
+        printf("UNIDADE DE MEDIDA: %s", produto.Medida);
+        Console(5, 15);
+        printf("ESTOQUE: %d", produto.QNT_Estoque);
+        Console(5, 16);
+        printf("VALIDADE: %s", produto.Data_Validade);
+        Console(5, 17);
+        printf("-----------------------------------------");
+        Console(5, 18);
+        printf("\033[32mPressione Enter para continuar...\033[0m");
         getchar();
     } else {
         Console(5, 2);
