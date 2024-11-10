@@ -58,7 +58,7 @@ void FluxoDeCaixa() {
                         break;
                     case 3:
                         // Função para listar vendas
-                        printf("Listando Vendas...\n");
+                        listVendas();
                         break;
                     case 0:
                         // Função para sair ou retornar ao menu anterior
@@ -158,5 +158,33 @@ return FluxoDeCaixa();
 
 void listVendas()
 {
+	int tecla;
+
+	Sleep(10);
+	system("CLS");
+	borda(120, 5);
+	borda(120, 7);
+	
+
+
+	do
+	{
+		Console(25, 1);
+		printf("\033[33m▒█░░░ ▀█▀ ▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█░░▒█ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀▄ ░█▀▀█");
+		Console(25, 2);
+		printf("▒█░░░ ▒█░ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ 　 ▒█░▒█ ▒█▀▀▀ 　 ░▒█▒█░ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▄▄█");
+		Console(25, 3);
+		printf("▒█▄▄█ ▄█▄ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ░░▀▄▀░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█░▒█\033[0m");
+		Console(44, 5);
+		printf("Clica no " "\033[34mESC\033[0m" " para sair da lista.");
+
+
+
+		setvbuf(stdin, NULL, _IONBF, 0);
+		tecla = _getch();
+		
+	} while (tecla != 27);
+
+	return 0;
 
 }
