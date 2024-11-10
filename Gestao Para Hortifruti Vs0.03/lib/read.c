@@ -39,6 +39,8 @@ void processarProduto(char** campos, int num_campos, void* dados_ptr) {
 void BuscarProduto() {
     Sleep(500);
     system("CLS");
+    borda(120,30);
+    borda(120,5);
     int id_produto;
     Mercadoria produto;
     int encontrado = 0;
