@@ -54,7 +54,7 @@ void FluxoDeCaixa() {
                         break;
                     case 2:
                         // Função para cancelar uma venda
-                        printf("Cancelando Venda...\n");
+                        cancelVendas();
                         break;
                     case 3:
                         // Função para listar vendas
@@ -113,8 +113,46 @@ void FluxoDeCaixa() {
 
 void cancelVendas()
 {
+   int tecla;
+int uid; // trocar a variavel para a variavel correta, o id venda
 
+Sleep(10);
+system("CLS");
+borda(120, 30);
+borda(120, 5);
+borda(120, 25);
+borda(120, 28);
+borda(28, 28);
+
+
+do
+{
+	Console(30, 1);
+	printf("\033[31m░█▀▀█ ─█▀▀█ ░█▄─░█ ░█▀▀█ ░█▀▀▀ ░█─── ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ ░█▄─░█ ▀▀█▀▀ ░█▀▀▀█");
+	Console(30, 2);
+	printf("░█─── ░█▄▄█ ░█░█░█ ░█─── ░█▀▀▀ ░█─── ░█▄▄█ ░█░█░█ ░█▀▀▀ ░█░█░█ ─░█── ░█──░█ ");
+	Console(30, 3);
+	printf("░█▄▄█ ░█─░█ ░█──▀█ ░█▄▄█ ░█▄▄▄ ░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ ░█──▀█ ─░█── ░█▄▄▄█\033[0m");
+	Console(15, 28);
+	printf("Clica no " "\033[34mESC\033[0m" " para sair do Cancelamento da venda. O \033[32mENTER\033[0m para Confirmar o cancelamento");
+
+
+	Console(2, 26);
+	printf("\033[35mID: \033[0m");
+
+
+	setvbuf(stdin, NULL, _IONBF, 0);
+	tecla = _getch();
+	if (tecla == 13) {
+		Console(6, 26);
+		scanf_s("%d", &uid);
+	}
+} while (tecla != 27);
+
+return FluxoDeCaixa();
 }
+
+
 
 
 
