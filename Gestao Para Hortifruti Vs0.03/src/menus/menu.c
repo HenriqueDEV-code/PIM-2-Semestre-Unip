@@ -130,8 +130,10 @@ void QUEMSOMOS(void)
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
 
-         Console(2,5);
-         printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti com solucoes eficientes");
+         Console(2,8);
+         printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
+         Console(2,9);
+         prinft("com solucoes eficientes")
 
 
 
