@@ -20,11 +20,7 @@ void CadastroProduto()
     Console(44,28);
     printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
     // ------------------------------//
-   setvbuf(stdin, NULL, _IONBF,0);
-    tecla = getch();
-    if(tecla == 27) {return ExibirMenu();}
-
-
+   
     Console(5, 8);
     Ler_Int(&produto.UID, "Digite o ID do produto: ");
 
@@ -56,8 +52,10 @@ void CadastroProduto()
     {
         showNotification(L"Erro no arquivo", MB_ICONEXCLAMATION);
     }
-
-    EntradaMercadoria();
+    setvbuf(stdin, NULL, _IONBF,0);
+    tecla = getch();
+    if(tecla == 27) {return EntradaMercadoria();}
+    
 }
 
 void ExibirBordas()
