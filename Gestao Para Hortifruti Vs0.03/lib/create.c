@@ -112,108 +112,97 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
 }
 
 void fluxoDeVendas() {
-    int escolha, linha, coluna, tecla;
+   int escolha, linha, coluna, tecla;
     sales vendas;
     vendas.total = 0;
+Sleep(10);
+system("CLS");
+borda(120, 30);
+borda(120, 5);
+borda(120, 25);
+borda(120, 28);
 
-    Sleep(10);
-    system("CLS");
-    borda(120, 30);
-    borda(120, 7);
-    borda(33, 30);
-    borda(120, 28);
 
-    do {
-        // primeiro do para mostrar as informacoes do front de caixa
-        Console(114, 2);
-        printf("❌");
-        Console(3, 2);
-        printf("\033[33mＣＡＩＸＡ－ＶＥＮＤＡＳ\033[0m");
 
-        Console(3, 5);
-        printf("\033[35mC̲O̲D̲I̲G̲O̲: \033[0m");
-        Console(40, 5);
-        printf("\033[35mQ̲U̲A̲N̲T̲I̲D̲A̲D̲E̲: \033[0m");
-        Console(77, 5);
-        printf("\033[35mP̲R̲E̲C̲O̲ U̲N̲I̲T̲A̲R̲I̲O̲: \033[0m");
-        Console(40, 7);
-        printf("\033[35mT̲O̲T̲A̲L̲ I̲T̲E̲M̲: \033[0m");
-        Console(18, 28);
-        printf("Usar -> \033[31m← →\033[0m para se guiar no menu. O \033[32mENTER\033[0m para confirmar e o ❌ para sair ou retornar");
+borda(30, 25);
+borda(100, 25);
+do
+{
+	Console(2, 1);
+	printf("\033[33m▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
+	Console(2, 2);
+	printf("▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
+	Console(2, 3);
+	printf("▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█\033[0m");
+	Console(18, 28);
+	printf("Usar -> \033[31m← →\033[0m para se guiar no menu. O \033[32mENTER\033[0m para confirmar e o " "\033[34mESC\033[0m" " para sair ou retornar");
 
-        escolha = 1;
-        linha = 5;
-        coluna = 17;
-        Console(coluna, linha);
-        printf("➤");
+	// menu superior
 
-        while (1) {
-            setvbuf(stdin, NULL, _IONBF, 0);
-            tecla = getch();
+	Console(30, 3);
+	printf("\033[36mITEM\033[0m");
+	Console(38, 3);
+	printf("\033[36mDESCRICAO\033[0m");
+	Console(59, 3);
+	printf("\033[36mQUANTIDADE\033[0m");
+	Console(72, 3);
+	printf("\033[36mTIPO\033[0m");
+	Console(79, 3);
+	printf("\033[36mVALOR\033[0m");
+	Console(88, 3);
+	printf("\033[36mTOTAL\033[0m");
+	Console(100, 3);
+	printf("\033[33mSUB TOTAL: \033[0m");
 
-            if (tecla == ENTER) {
-                switch (escolha) {
-                case 1:
-                    Console(17, 5);
-                    printf(" ");
-                    Console(17, 5);
-                    scanf(&vendas.productCode);
-                    break;
-                case 2:
-                    Console(61, 5);
-                    printf(" ");
-                    Console(61, 5);
-                    scanf(&vendas.quantity);
-                    break;
-                case 3:
-                    Console(106, 5);
-                    printf(" ");
-                    Console(106, 5);
-                    scanf(&vendas.precoUnitario);
-                    break;
-                case 4:
-                    vendas.total = vendas.quantity * vendas.precoUnitario;
-                    Console(140, 5);
-                    printf("%.2f", vendas.total);
-                    break;
-                case 0:
-                    // Função para sair ou retornar ao menu anterior
-                    printf("Saindo...\n");
-                    return;
-                }
-            }
+	// menu inferior
 
-            if (tecla == 77 || tecla == 75) { // Right or Left arrow keys
-                Console(coluna, linha);
-                printf(" ");
+	Console(2, 26);
+	printf("\033[35mID: \033[0m");
+	Console(11, 26);
+	printf("\033[35mQUANTIDADE: \033[0m");
 
-                if (tecla == 77)
-                    escolha++;
-                else if (tecla == 75)
-                    escolha--;
+	escolha = 1;
+	linha = 26;
+	coluna = 6;
+	Console(coluna, linha);
+	printf(" ");
 
-                if (escolha < 1)
-                    escolha = 4;
-                else if (escolha > 4)
-                    escolha = 1;
 
-                if (escolha == 1) {
-                    coluna = 17;
-                    linha = 5;
-                } else if (escolha == 2) {
-                    coluna = 61;
-                    linha = 5;
-                } else if (escolha == 3) {
-                    coluna = 106;
-                    linha = 5;
-                } else if (escolha == 4) {
-                    coluna = 140;
-                    linha = 5;
-                }
 
-                Console(coluna, linha);
-                printf("➤");
-            }
-        }
-    } while (1);
+	while(1)
+	{
+		setvbuf(stdin, NULL, _IONBF, 0);
+		tecla = _getch();
+
+		if (tecla == 13)
+		{
+			if(escolha == 1) { /* ID */ }
+			if(escolha == 2) { /* QUANTIDADE */ }
+			
+		}
+		else if (tecla == 27) // tecla ESC para retornar ao fluxo de caixa
+		{
+			return FluxoDeCaixa();
+		}
+
+		if (tecla == 77 || tecla == 75)
+		{
+			Console(coluna, linha);
+			printf(" ");
+
+			if (tecla == 77) escolha--;
+			else if (tecla == 75) escolha++;
+
+			if (escolha < 1) escolha = 2;
+			else if (escolha > 2) escolha = 1;
+
+			if (escolha == 1) { coluna = 6; linha = 26; }
+			else if(escolha == 2) { coluna = 23; linha = 26; }
+			Console(coluna, linha);
+			printf(" ");
+		}
+	}
+	
+} while (1);
+
 }
