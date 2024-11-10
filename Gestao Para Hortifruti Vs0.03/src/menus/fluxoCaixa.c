@@ -109,3 +109,16 @@ void FluxoDeCaixa() {
     } while (1);
     
 }
+
+
+void cancelVendas()
+{
+
+}
+
+
+
+void listVendas()
+{
+
+}
