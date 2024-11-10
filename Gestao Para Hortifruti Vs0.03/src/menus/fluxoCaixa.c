@@ -185,6 +185,6 @@ void listVendas()
 		
 	} while (tecla != 27);
 
-	return 0;
+	return FluxoDeCaixa();
 
 }
