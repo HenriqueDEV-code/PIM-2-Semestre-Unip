@@ -131,13 +131,19 @@ void QUEMSOMOS(void)
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
 
          Console(2,8);
-         printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
+         printf("Somos a " "Connection and Solution" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
          Console(2,9);
-         printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil de usar.");
+         printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil");
          Console(2,10);
-         printf("Nosso software oferece recursos essenciais como cadastramento de produtos, fluxo de caixa e relatorio de entrada e saida, ");
-         Console(2,11);
-         printf("tudo em uma interface intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicios e fortalecer");
+         printf("de usar.");
+         Console(2,12);
+         printf("Nosso software oferece recursos essenciais como cadastramento de produtos, vendas e relatorio, tudo em uma interface");
+         Console(2,13);
+         printf("intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicio e fortalecer a");
+         Console(2,14);
+         printf("responsabilidade social. Por isso, incluimos uma funcionalidade especifica para doacoes, facilitando a distribuicao");
+
+         
 
 
 
