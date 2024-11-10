@@ -13,14 +13,7 @@ void CadastroProduto()
     int idDuplicado = 0, tecla;
     Mercadoria produto;
     FILE *arquivo;
-
-
-   // front
     ExibirBordas();
-    Console(44,28);
-    printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
-    // ------------------------------//
-   
     Console(5, 8);
     Ler_Int(&produto.UID, "Digite o ID do produto: ");
 
