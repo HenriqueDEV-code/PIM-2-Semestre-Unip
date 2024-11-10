@@ -11,6 +11,8 @@
 void ExcluirProduto() {
     Sleep(500);
     system("CLS");
+    borda(120,30);
+    borda(120,5);
     FILE* arquivo = fopen(ARQUIVO_ESTOQUE, "r");
     if (arquivo == NULL) {
         Console(5, 2);
