@@ -142,6 +142,15 @@ void QUEMSOMOS(void)
          printf("intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicio e fortalecer a");
          Console(2,14);
          printf("responsabilidade social. Por isso, incluimos uma funcionalidade especifica para doacoes, facilitando a distribuicao");
+         Console(2,15);
+         printf("de produtos excelentes para quem mais precisa.");
+         Console(2,17);
+         printf("Combinamos tecnologia e proposito para ajudar nossos clientes a manter suas operacoes organizadas e eficientes,");
+         Console(2,18);
+         printf("ao mesmo tempo que criam impacto positivo na comunidade. Nossa equipe esta comprometidaem entregar ferramentas");
+         Console(2,19);
+         printf("praticas, com suporte dedicado, garantindo uma gestao eficientee produtos sempre frescos e de qualidade.");
+
 
          
 
