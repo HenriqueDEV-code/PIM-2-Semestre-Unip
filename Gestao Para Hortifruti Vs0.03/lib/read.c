@@ -46,7 +46,7 @@ void BuscarProduto() {
     int encontrado = 0;
 
     Console(5, 7);
-    Ler_Int(&id_produto, "Digite o ID do produto: ");
+    Ler_Int(&id_produto, "\033[36mDigite o ID do produto: \033[0m");
 
     FILE *arquivo = fopen(ARQUIVO_ESTOQUE, "r");
     if (arquivo == NULL) {
@@ -60,23 +60,23 @@ void BuscarProduto() {
 
     if (encontrado) {
         Console(5, 9);
-        printf("-----------------------------------------");
+        printf("\033[31m-----------------------------------------\033[0m");
         Console(5, 10);
-        printf("ID: %d", produto.UID);
+        printf("\033[36mID:\033[0m %d", produto.UID);
         Console(5, 11);
-        printf("NOME: %s", produto.nome);
+        printf("\033[36mNOME:\033[0m %s", produto.nome);
         Console(5, 12);
-        printf("CATEGORIA: %s", produto.Grupo);
+        printf("\033[36mCATEGORIA:\033[0m %s", produto.Grupo);
         Console(5, 13);
-        printf("PREÇO: R$ %.2f", produto.preco);
+        printf("\033[36mPREÇO:\033[0m R$ %.2f", produto.preco);
         Console(5, 14);
-        printf("UNIDADE DE MEDIDA: %s", produto.Medida);
+        printf("\033[36mUNIDADE DE MEDIDA:\033[0m %s", produto.Medida);
         Console(5, 15);
-        printf("ESTOQUE: %d", produto.QNT_Estoque);
+        printf("\033[36mESTOQUE:\033[0m %d", produto.QNT_Estoque);
         Console(5, 16);
-        printf("VALIDADE: %s", produto.Data_Validade);
+        printf("\033[36mVALIDADE:\033[0m %s", produto.Data_Validade);
         Console(5, 17);
-        printf("-----------------------------------------");
+        printf("\033[31m-----------------------------------------\033[0m");
         Console(5, 18);
         printf("\033[32mPressione Enter para continuar...\033[0m");
         getchar();
