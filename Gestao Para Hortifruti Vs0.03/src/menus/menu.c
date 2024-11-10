@@ -130,25 +130,25 @@ void QUEMSOMOS(void)
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
 
-         Console(2,8);
-         printf("Somos a " "Connection and Solution" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
-         Console(2,9);
-         printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil");
          Console(2,10);
-         printf("de usar.");
+         printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
+         Console(2,11);
+         printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil");
          Console(2,12);
-         printf("Nosso software oferece recursos essenciais como cadastramento de produtos, vendas e relatorio, tudo em uma interface");
-         Console(2,13);
-         printf("intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicio e fortalecer a");
+         printf("de usar.");
          Console(2,14);
-         printf("responsabilidade social. Por isso, incluimos uma funcionalidade especifica para doacoes, facilitando a distribuicao");
+         printf("Nosso software oferece recursos essenciais como cadastramento de produtos, vendas e relatorio, tudo em uma interface");
          Console(2,15);
-         printf("de produtos excelentes para quem mais precisa.");
+         printf("intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicio e fortalecer a");
+         Console(2,16);
+         printf("responsabilidade social. Por isso, incluimos uma funcionalidade especifica para doacoes, facilitando a distribuicao");
          Console(2,17);
-         printf("Combinamos tecnologia e proposito para ajudar nossos clientes a manter suas operacoes organizadas e eficientes,");
-         Console(2,18);
-         printf("ao mesmo tempo que criam impacto positivo na comunidade. Nossa equipe esta comprometidaem entregar ferramentas");
+         printf("de produtos excelentes para quem mais precisa.");
          Console(2,19);
+         printf("Combinamos tecnologia e proposito para ajudar nossos clientes a manter suas operacoes organizadas e eficientes,");
+         Console(2,20);
+         printf("ao mesmo tempo que criam impacto positivo na comunidade. Nossa equipe esta comprometidaem entregar ferramentas");
+         Console(2,21);
          printf("praticas, com suporte dedicado, garantindo uma gestao eficientee produtos sempre frescos e de qualidade.");
 
 
