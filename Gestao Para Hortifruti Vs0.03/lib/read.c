@@ -140,24 +140,34 @@ void leituraTodosProdutos(char** campos, int num_campos) {
     char* medida = campos[4];
     int QNT_Estoque = atoi(campos[5]);
     char* data_validade = campos[6];
-
-    printf("-----------------------------------------\n");
-    printf("ID: %d\n", UID);
-    printf("NOME: %s\n", nome);
-    printf("CATEGORIA: %s\n", grupo);
-    printf("PREÇO: R$ %.2f\n", preco);
-    printf("UNIDADE DE MEDIDA: %s\n", medida);
-    printf("ESTOQUE: %d\n", QNT_Estoque);
-    printf("VALIDADE: %s\n", data_validade);
-    printf("-----------------------------------------\n");
-
-    printf("\033[32mPressione Enter para continuar...\n\033[0m");
+    Console(5, 10);
+    printf("-----------------------------------------");
+    Console(5, 10);
+    printf("ID: %d", UID);
+    Console(5, 10);
+    printf("NOME: %s", nome);
+    Console(5, 10);
+    printf("CATEGORIA: %s", grupo);
+    Console(5, 10);
+    printf("PREÇO: R$ %.2f", preco);
+    Console(5, 10);
+    printf("UNIDADE DE MEDIDA: %s", medida);
+    Console(5, 10);
+    printf("ESTOQUE: %d", QNT_Estoque);
+    Console(5, 10);
+    printf("VALIDADE: %s", data_validade);
+    Console(5, 10);
+    printf("-----------------------------------------");
+    Console(5, 10);
+    printf("\033[32mPressione Enter para continuar...\033[0m");
     getchar();
 }
 
 void ListarProduto() {
     Sleep(500);
     system("CLS");
+    borda(120,30);
+    borda(120,5);
     Console(5, 9);
     printf("\033[32mLista de produtos cadastrados:\n\033[0m");
 
