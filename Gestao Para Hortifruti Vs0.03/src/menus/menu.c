@@ -133,7 +133,11 @@ void QUEMSOMOS(void)
          Console(2,8);
          printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
          Console(2,9);
-         printf("com solucoes eficientes");
+         printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil de usar.");
+         Console(2,10);
+         printf("Nosso software oferece recursos essenciais como cadastramento de produtos, fluxo de caixa e relatorio de entrada e saida, ");
+         Console(2,11);
+         printf("tudo em uma interface intuitiva e amigavel para o colaborador. Tambem entendemos a importancia de reduzir o desperdicios e fortalecer");
 
 
 
