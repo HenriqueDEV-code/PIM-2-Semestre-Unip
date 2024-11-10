@@ -52,10 +52,8 @@ void CadastroProduto()
     {
         showNotification(L"Erro no arquivo", MB_ICONEXCLAMATION);
     }
-    setvbuf(stdin, NULL, _IONBF,0);
-    tecla = getch();
-    if(tecla == 27) {return EntradaMercadoria();}
-    
+
+    return EntradaMercadoria();
 }
 
 void ExibirBordas()
