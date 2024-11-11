@@ -119,6 +119,7 @@ system("CLS");
 borda(120, 30);
 borda(120, 5);
 borda(120, 25);
+
 borda(120, 28);
 
 
