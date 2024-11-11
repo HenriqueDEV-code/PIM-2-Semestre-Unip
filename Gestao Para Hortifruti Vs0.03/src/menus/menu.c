@@ -128,10 +128,10 @@ void QUEMSOMOS(void)
         Console(35,4);
         printf("░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░░▒█ 　 ▒█▄▄▄█ ▒█▄▄▄█ ▒█░░▒█ ▒█▄▄▄█ ▒█▄▄▄█\033[0m");
         Console(44,28);
-        printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
+        printf("Clica no " "\033[34mESC\033[0m" " para sair QUEM SOMOS");
 
          Console(2,10);
-         printf("Somos a " "\033[36mConnection and Solution\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
+         printf("Somos a " "\033[36mConnection and Solution ©\033[0m" ", uma empresa de tecnologia dedicada a transformar a gesta do setor hortifruti");
          Console(2,11);
          printf("com solucoes eficientes e sustentaveis. Nosso objetivo e simplificar a administracao com um sistema completo e facil");
          Console(2,12);
