@@ -149,7 +149,7 @@ void QUEMSOMOS(void)
          Console(2,20);
          printf("ao mesmo tempo que criam impacto positivo na comunidade. Nossa equipe esta comprometidaem entregar ferramentas");
          Console(2,21);
-         printf("praticas, com suporte dedicado, garantindo uma gestao eficientee produtos sempre frescos e de qualidade.");
+         printf("praticas, com suporte dedicado, garantindo uma gestao eficiente e produtos sempre frescos e de qualidade.");
 
 
          
