@@ -111,22 +111,22 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
 }
 
 void fluxoDeVendas() {
-   int escolha, linha, coluna, tecla;
+    int escolha, linha, coluna, tecla;
     sales vendas;
     vendas.total = 0;
-Sleep(10);
-system("CLS");
-borda(120, 30);
-borda(120, 5);
-borda(120, 25);
-borda(120, 28);
+    Sleep(10);
+    system("CLS");
+    borda(120, 30);
+    borda(120, 5);
+    borda(120, 25);
+    borda(120, 28);
 
 
 
-borda(30, 25);
-borda(100, 25);
-do
-{
+    borda(30, 25);
+    borda(100, 25);
+    do
+    {
 	Console(2, 1);
 	printf("\033[33m▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
 	Console(2, 2);
@@ -173,13 +173,13 @@ do
 		setvbuf(stdin, NULL, _IONBF, 0);
 		tecla = _getch();
 
-		if (tecla == 13)
+		if (tecla == ENTER)
 		{
 			if(escolha == 1) { /* ID */ }
 			if(escolha == 2) { /* QUANTIDADE */ }
 			
 		}
-		else if (tecla == 27) // tecla ESC para retornar ao fluxo de caixa
+		else if (tecla == ESC) // tecla ESC para retornar ao fluxo de caixa
 		{
 			return FluxoDeCaixa();
 		}

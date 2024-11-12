@@ -8,7 +8,7 @@ LIB_DIR = lib
 DIST_DIR = dist
 
 # Arquivos fonte
-SRC_FILES = $(SRC_DIR)/main.c $(SRC_DIR)/validation.c $(SRC_DIR)/menus/produto.c $(SRC_DIR)/menus/fluxoCaixa.c $(SRC_DIR)/menus/menu.c 
+SRC_FILES = $(SRC_DIR)/main.c $(SRC_DIR)/menus/produto.c $(SRC_DIR)/menus/fluxoCaixa.c $(SRC_DIR)/menus/menu.c 
 LIB_FILES = $(LIB_DIR)/create.c $(LIB_DIR)/misc.c $(LIB_DIR)/read.c $(LIB_DIR)/remove.c $(LIB_DIR)/update.c
 
 # Arquivo executável
