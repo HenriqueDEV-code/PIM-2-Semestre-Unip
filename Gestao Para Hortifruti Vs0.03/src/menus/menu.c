@@ -208,7 +208,7 @@ void FeedBack(void)
 		Console(5, 11);
 		printf("mum pouco sobre sua experiencia com o sistema. Para isso, gostariamos de pergunta:");
 		Console(5, 13);
-		printf("\033[33m(Por favor, utilize uma escala de 1 a 5, onde \033[31m1\033[33m representa \"muito insatisfeito\" e \033[32m5 \033[33mrepresenta \"satisfeito\")");
+		printf("\033[33m(Por favor, utilize uma escala de 1 a 5, onde \033[31m1\033[33m representa \"muito insatisfeito\" e \033[32m5 \033[33mrepresenta \" Muito satisfeito\")");
 		Console(5, 14);
 		printf("\033[33mQUAL O SEU NIVEL DE SATISFACAO COM O SISTEMA? : \033[0m");
 		Console(5, 16);
@@ -247,7 +247,7 @@ void FeedBack(void)
 			}
 			else if (tecla == 27)
 			{
-				return fluxoDeVendas();
+				return MenuDeGestaoHortifrut();
 			}
 
 			if (tecla == 72 || tecla == 80)
@@ -275,6 +275,5 @@ void FeedBack(void)
 
 	
 		
-	} while (tecla != 27);
-	return fluxoDeVendas();
+	} while (1);
 }
