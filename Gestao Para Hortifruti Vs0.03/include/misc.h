@@ -7,7 +7,8 @@
 #include <Windows.h>
 
 typedef enum {
-	ENTER = 13
+	ENTER = 13,
+	ESC = 27
 } Keys;
 
 int Console(int x, int y);

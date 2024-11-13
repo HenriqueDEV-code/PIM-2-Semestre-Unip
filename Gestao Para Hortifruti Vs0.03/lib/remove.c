@@ -6,8 +6,6 @@
 #include <stdbool.h>
 #include "../include/product.h"
 
-#define MAXCHAR 1000
-
 void ExcluirProduto() {
     Sleep(500);
     system("CLS");
