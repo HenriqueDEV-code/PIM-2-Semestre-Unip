@@ -9,7 +9,7 @@ void CadastroProduto()
 {
     Sleep(500);
     system("CLS");
- 
+
     int idDuplicado = 0, tecla;
     Mercadoria produto;
     FILE *arquivo;
@@ -58,21 +58,23 @@ void ExibirBordas()
 int VerificarIdDuplicado(FILE *arquivo, int id)
 {
     char row[MAXCHAR];
-    char* token;
+    char *token;
     Mercadoria produto;
 
-    while (fgets(row, MAXCHAR, arquivo) != NULL) {
+    while (fgets(row, MAXCHAR, arquivo) != NULL)
+    {
         // Remover nova linha do final da string, se existir
         row[strcspn(row, "\n")] = 0;
 
         token = strtok(row, ";");
         produto.UID = atoi(token);
 
-        if (produto.UID == id) {
+        if (produto.UID == id)
+        {
             return 1;
         }
     }
-    
+
     return 0;
 }
 
@@ -101,10 +103,13 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
     // Verifica se o arquivo está vazio
     fseek(arquivo, 0, SEEK_END);
     long tamanho = ftell(arquivo);
-    if (tamanho == 0) {
+    if (tamanho == 0)
+    {
         // Se o arquivo estiver vazio, não adiciona nova linha
         fprintf(arquivo, "%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
-    } else {
+    }
+    else
+    {
         // Se o arquivo não estiver vazio, adiciona nova linha antes do produto
         fprintf(arquivo, "\n%d;%s;%s;%.2f;%s;%d;%s", produto->UID, produto->nome, produto->Grupo, produto->preco, produto->Medida, produto->QNT_Estoque, produto->Data_Validade);
     }
@@ -112,96 +117,128 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
 
 void fluxoDeVendas() {
     int escolha, linha, coluna, tecla;
+    int linhaAtual = 5; // Começa abaixo do cabeçalho
     sales vendas;
     vendas.total = 0;
+    Mercadoria produto;
+    FILE *arquivo;
+
     Sleep(10);
     system("CLS");
     borda(120, 30);
     borda(120, 5);
     borda(120, 25);
     borda(120, 28);
-
-
-
     borda(30, 25);
     borda(100, 25);
-    do
-    {
-	Console(2, 1);
-	printf("\033[33m▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
-	Console(2, 2);
-	printf("▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
-	Console(2, 3);
-	printf("▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█\033[0m");
-	Console(18, 28);
-	printf("Usar -> \033[31m← →\033[0m para se guiar no menu. O \033[32mENTER\033[0m para confirmar e o " "\033[34mESC\033[0m" " para sair ou retornar");
+    
+    Console(2, 1);
+    printf("\033[33m▒█▀▀█ ░█▀▀█ ▀█▀ ▀▄▒▄▀ ░█▀▀█");
+    Console(2, 2);
+    printf("▒█░░░ ▒█▄▄█ ▒█░ ░▒█░░ ▒█▄▄█");
+    Console(2, 3);
+    printf("▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█\033[0m");
+    Console(18, 28);
+    printf("Usar -> \033[31m← →\033[0m para se guiar no menu. O \033[32mENTER\033[0m para confirmar e o \033[34mESC\033[0m para sair ou retornar");
 
-	// menu superior
+    // Cabeçalho do Menu Superior
+    Console(30, 3);
+    printf("\033[36mITEM\033[0m");
+    Console(38, 3);
+    printf("\033[36mDESCRICAO\033[0m");
+    Console(59, 3);
+    printf("\033[36mQUANTIDADE\033[0m");
+    Console(72, 3);
+    printf("\033[36mTIPO\033[0m");
+    Console(79, 3);
+    printf("\033[36mVALOR\033[0m");
+    Console(88, 3);
+    printf("\033[36mTOTAL\033[0m");
+    Console(100, 3);
+    printf("\033[33mSUB TOTAL: \033[0m");
 
-	Console(30, 3);
-	printf("\033[36mITEM\033[0m");
-	Console(38, 3);
-	printf("\033[36mDESCRICAO\033[0m");
-	Console(59, 3);
-	printf("\033[36mQUANTIDADE\033[0m");
-	Console(72, 3);
-	printf("\033[36mTIPO\033[0m");
-	Console(79, 3);
-	printf("\033[36mVALOR\033[0m");
-	Console(88, 3);
-	printf("\033[36mTOTAL\033[0m");
-	Console(100, 3);
-	printf("\033[33mSUB TOTAL: \033[0m");
+    // Menu inferior para entrada de dados
+    Console(2, 26);
+    printf("\033[35mID: \033[0m");
+    Console(11, 26);
+    printf("\033[35mQUANTIDADE: \033[0m");
 
-	// menu inferior
+    escolha = 1;
+    linha = 26;
+    coluna = 6;
+    Console(coluna, linha);
+    printf(" ");
 
-	Console(2, 26);
-	printf("\033[35mID: \033[0m");
-	Console(11, 26);
-	printf("\033[35mQUANTIDADE: \033[0m");
+    while (1) {
+        setvbuf(stdin, NULL, _IONBF, 0);
+        tecla = _getch();
 
-	escolha = 1;
-	linha = 26;
-	coluna = 6;
-	Console(coluna, linha);
-	printf(" ");
+        if (tecla == ENTER) {
+            if (escolha == 1) {
+                Console(6, 26);
+                scanf("%d", &vendas.productCode);
+            }
 
+            if (escolha == 2) {
+                Console(26, 26);
+                scanf("%f", &vendas.quantity);
 
+                // Abrir o arquivo de produtos e buscar o produto
+                arquivo = fopen(ARQUIVO_ESTOQUE, "r");
+                if (arquivo == NULL) {
+                    printf("Erro ao abrir o arquivo de produtos.\n");
+                    return;
+                }
 
-	while(1)
-	{
-		setvbuf(stdin, NULL, _IONBF, 0);
-		tecla = _getch();
+                // Buscar o produto pelo ID
+                if (BuscarProdutoPorID(arquivo, vendas.productCode, &produto)) {
+                    // Exibir os dados do produto na linha atual
+                    Console(30, linhaAtual);
+                    printf("%d", produto.UID);
+                    Console(38, linhaAtual);
+                    printf("%s", produto.nome);
+                    Console(59, linhaAtual);
+                    printf("%.2f", vendas.quantity); // Quantidade informada pelo usuário
+                    Console(72, linhaAtual);
+                    printf("%s", produto.Medida);
+                    Console(79, linhaAtual);
+                    printf("%.2f", produto.preco);
+                    Console(88, linhaAtual);
+                    float totalProduto = produto.preco * vendas.quantity;
+                    printf("%.2f", totalProduto);
 
-		if (tecla == ENTER)
-		{
-			if(escolha == 1) { /* ID */ }
-			if(escolha == 2) { /* QUANTIDADE */ }
-			
-		}
-		else if (tecla == ESC) // tecla ESC para retornar ao fluxo de caixa
-		{
-			return FluxoDeCaixa();
-		}
+                    // Atualizar o subtotal
+                    vendas.total += totalProduto;
+                    Console(100, 5);
+                    printf("\033[33m%.2f\033[0m", vendas.total);
 
-		if (tecla == 77 || tecla == 75)
-		{
-			Console(coluna, linha);
-			printf(" ");
+                    // Mover para a próxima linha para o próximo produto
+                    linhaAtual++;
+                } else {
+                    Console(30, linhaAtual);
+                    printf("Produto não encontrado.");
+                }
 
-			if (tecla == 77) escolha--;
-			else if (tecla == 75) escolha++;
+                fclose(arquivo);  // Fechar o arquivo após o uso
+            }
+        } else if (tecla == ESC) {
+            return FluxoDeCaixa();
+        }
 
-			if (escolha < 1) escolha = 2;
-			else if (escolha > 2) escolha = 1;
+        if (tecla == 77 || tecla == 75) {
+            Console(coluna, linha);
+            printf(" ");
 
-			if (escolha == 1) { coluna = 6; linha = 26; }
-			else if(escolha == 2) { coluna = 23; linha = 26; }
-			Console(coluna, linha);
-			printf(" ");
-		}
-	}
-	
-} while (1);
+            if (tecla == 77) escolha--;
+            else if (tecla == 75) escolha++;
 
+            if (escolha < 1) escolha = 2;
+            else if (escolha > 2) escolha = 1;
+
+            if (escolha == 1) { coluna = 6; linha = 26; }
+            else if (escolha == 2) { coluna = 23; linha = 26; }
+            Console(coluna, linha);
+            printf(" ");
+        }
+    }
 }
