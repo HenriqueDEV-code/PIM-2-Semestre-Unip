@@ -7,6 +7,7 @@ void EntradaMercadoria(void);
 void RelatorioDeSistema(void);
 void QUEMSOMOS(void);
 int MenuDeGestaoHortifrut(void);
-
+void Sugestao(void);
+void Doacoes(void);
 
 #endif

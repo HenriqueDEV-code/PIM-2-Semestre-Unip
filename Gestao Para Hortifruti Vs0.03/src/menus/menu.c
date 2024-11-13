@@ -165,3 +165,76 @@ void QUEMSOMOS(void)
         
     return MenuDeGestaoHortifrut();
 }
+
+
+void Sugestao(void)
+{
+	
+	int tecla;
+	int satisfacao1a5;
+	char pergunta1[101];
+	char pergunta2[101];
+	char pergunta3[101];
+	char pergunta4[101];
+	Sleep(10);
+	system("CLS");
+	borda(120, 30);
+	borda(120, 8);
+	borda(120, 28);
+	
+	do
+	{
+		Console(30, 1);
+		printf("\033[33m███████╗███████╗███████╗██████╗░██████╗░░█████╗░░█████╗░██╗░░██╗");
+		Console(30, 2);
+		printf("██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║░██╔");
+		Console(30, 3);
+		printf("█████╗░░█████╗░░█████╗░░██║░░██║██████╦╝███████║██║░░╚═╝█████═╝");
+		Console(30, 4);
+		printf("██╔══╝░░██╔══╝░░██╔══╝░░██║░░██║██╔══██╗██╔══██║██║░░██╗██╔═██╗");
+		Console(30, 5);
+		printf("██║░░░░░███████╗███████╗██████╔╝██████╦╝██║░░██║╚█████╔╝██║░╚██");
+		Console(30, 6);
+		printf("╚═╝░░░░░╚══════╝╚══════╝╚═════╝░╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝\033[0m");
+		Console(40, 28);
+		printf("Clica no " "\033[34mESC\033[0m" " para sair da aba FeedBack.");
+		Console(5, 9);
+		printf("Ola! tudo bem?");
+		Console(5, 10);
+		printf("Somos a \033[36mConnection and Solution ©\033[0m e gostariamos de compartilhar o feedback sobre a ultima sessao e saber");
+		Console(5, 11);
+		printf("mum pouco sobre sua experiencia com o sistema. Para isso, gostariamos de pergunta:");
+		Console(5, 13);
+		printf("\033[33m(Por favor, utilize uma escala de 1 a 5, onde \033[31m1\033[33m representa \"muito insatisfeito\" e \033[32m5 \033[33mrepresenta \"satisfeito\")");
+		Console(5, 14);
+		printf("\033[33mQUAL O SEU NIVEL DE SATISFACAO COM O SISTEMA? : \033[0m");
+		scanf_s("%d", &satisfacao1a5);
+		setvbuf(stdin, NULL, _IONBF, 0);
+		Console(5, 16);
+		printf("Alem disso, para nos ajudar a aprimorar o sistema, pedimos que voce compartilhe algumas observacoes:");
+		Console(5, 18);
+		printf("1. \033[36mQuais aspectos voce mais gostou? \033[0m");
+		fgets(pergunta1, sizeof(pergunta1), stdin);
+		Console(5, 20);
+		printf("2. \033[36mQuais aspectos voce acha que poderiam ser melhorados? \033[0m");
+		fgets(pergunta2, sizeof(pergunta2), stdin);
+
+		Console(5, 22);
+		printf("3. \033[36mHa algum recurso que voce gostaria de ver adcionado? \033[0m");
+		fgets(pergunta3, sizeof(pergunta3), stdin);
+
+		Console(5, 24);
+		printf("4. \033[36mAlgum outro comentario ou sugestao? \033[0m");
+		fgets(pergunta4, sizeof(pergunta4), stdin);
+
+		Console(99, 26);
+		printf("SALVAR? (\033[32mS\033[0m/\033[31mN\033[0m):");
+		scanf_s("%d", &tecla);
+	
+
+		
+		
+		
+	} while (1);
+	return MenuDeGestaoHortifrut();
+}
