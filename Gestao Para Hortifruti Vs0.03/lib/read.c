@@ -156,9 +156,9 @@ void leituraTodosProdutos(char** campos, int num_campos) {
 
 void ListarProduto() {
     Sleep(500);
-    system("CLS");
-    borda(120,30);
-    borda(120,5);
+	system("CLS");
+	borda(120, 5);
+	borda(120, 7);
     Console(5, 9);
     printf("\033[32m   Lista de produtos cadastrados:\n\033[0m");
 
