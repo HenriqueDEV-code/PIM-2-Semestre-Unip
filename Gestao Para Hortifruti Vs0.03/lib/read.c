@@ -140,17 +140,17 @@ void leituraTodosProdutos(char** campos, int num_campos) {
     char* medida = campos[4];
     int QNT_Estoque = atoi(campos[5]);
     char* data_validade = campos[6];
-    printf("\033[31m-----------------------------------------\n");
-    printf("ID: %d\n", UID);
-    printf("NOME: %s\n", nome);
-    printf("CATEGORIA: %s\n", grupo);
-    printf("PREÇO: R\033[32m$\033[0m %.2f\n", preco);
-    printf("UNIDADE DE MEDIDA: %s\n", medida);
-    printf("ESTOQUE: %d\n", QNT_Estoque);
-    printf("VALIDADE: %s\n", data_validade);
-    printf("\033[31m-----------------------------------------\n\033[0m");
+    printf("\t\033[31m-----------------------------------------\n\033[0m");
+    printf("\tID: %d\n", UID);
+    printf("\tNOME: %s\n", nome);
+    printf("\tCATEGORIA: %s\n", grupo);
+    printf("\tPREÇO: R\033[32m$\033[0m %.2f\n", preco);
+    printf("\tUNIDADE DE MEDIDA: %s\n", medida);
+    printf("\tESTOQUE: %d\n", QNT_Estoque);
+    printf("\tVALIDADE: %s\n", data_validade);
+    printf("\t\033[31m-----------------------------------------\n\033[0m");
 
-    printf("\033[32mPressione Enter para continuar...\n\033[0m");
+    printf("\t\033[32mPressione Enter para continuar...\n\033[0m");
     getchar();
 }
 
