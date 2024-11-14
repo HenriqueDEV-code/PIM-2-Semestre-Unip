@@ -160,7 +160,7 @@ void ListarProduto() {
     borda(120,30);
     borda(120,5);
     Console(5, 9);
-    printf("\033[32mLista de produtos cadastrados:\n\033[0m");
+    printf("\033[32m   Lista de produtos cadastrados:\n\033[0m");
 
     readCSV(ARQUIVO_ESTOQUE, leituraTodosProdutos);
 }
