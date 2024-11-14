@@ -140,26 +140,26 @@ void leituraTodosProdutos(char** campos, int num_campos) {
     char* medida = campos[4];
     int QNT_Estoque = atoi(campos[5]);
     char* data_validade = campos[6];
-    Console(5, 10);
-    printf("\033[31m-----------------------------------------\033[0m");
-    Console(5, 11);
-    printf("\033[36mID:\033[0m %d", UID);
-    Console(5, 12);
-    printf("\033[36mNOME:\033[0m %s", nome);
-    Console(5, 13);
-    printf("\033[36mCATEGORIA:\033[0m %s", grupo);
-    Console(5, 14);
-    printf("\033[36mPREÇO:\033[0m R\033[32m$\033[0m %.2f", preco);
-    Console(5, 15);
-    printf("\033[36mUNIDADE DE MEDIDA:\033[0m %s", medida);
-    Console(5, 16);
-    printf("\033[36mESTOQUE:\033[0m %d", QNT_Estoque);
-    Console(5, 17);
-    printf("\033[36mVALIDADE:\033[0m %s", data_validade);
-    Console(5, 18);
-    printf("\033[31m-----------------------------------------\033[0m");
-    Console(5, 19);
-    printf("\033[32mPressione Enter para continuar...\033[0m");
+    Console(5,10);
+    printf("\t\033[31m-----------------------------------------\033[0m\n");
+    
+    printf("\n\t\033[36mID:\033[0m %d", UID);
+    
+    printf("\n\t\033[36mNOME:\033[0m %s", nome);
+    
+    printf("\n\t\033[36mCATEGORIA:\033[0m %s", grupo);
+    
+    printf("\n\t\033[36mPREÇO:\033[0m R\033[32m$\033[0m %.2f", preco);
+    
+    printf("\n\t\033[36mUNIDADE DE MEDIDA:\033[0m %s", medida);
+    
+    printf("\n\t\033[36mESTOQUE:\033[0m %d", QNT_Estoque);
+   
+    printf("\n\t\033[36mVALIDADE:\033[0m %s", data_validade);
+    
+    printf("\n\t\033[31m-----------------------------------------\033[0m\n");
+    
+    printf("\t\033[32mPressione Enter para continuar...\033[0m");
     getchar();
 }
 
