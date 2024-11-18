@@ -5,7 +5,7 @@
 #include "../../include/product.h"
 #include "../../include/misc.h"
 
-int MenuDeGestaoHortifrut() {
+void MenuDeGestaoHortifrut() {
     int coluna, linha, escolha;
     int posicoes[7][2] = {
         {115, 1}, {8, 11}, {8, 13}, {8, 15}, {8, 17}, {8, 19}, {8, 21}

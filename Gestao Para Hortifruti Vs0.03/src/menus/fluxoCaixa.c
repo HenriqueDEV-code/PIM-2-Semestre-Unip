@@ -5,7 +5,8 @@
 #include "../../include/menu.h"
 #include "../../include/misc.h"
 
-void FluxoDeCaixa() {
+void FluxoDeCaixa()
+{
     int linha, coluna, tecla, escolha;
 
     do
@@ -22,7 +23,9 @@ void FluxoDeCaixa() {
         Console(10, 3);
         printf("▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▄▀▒▀▄ ▒█▄▄▄█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ▒█▄▄█ ▒█░▒█ ▄█▄ ▄▀▒▀▄ ▒█░▒█\033[0m");
         Console(12, 28);
-        printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o " "\033[34mESC\033[0m" " para sair do relatorio");
+        printf("Usar -> \033[31m↑ ↓\033[0m para se guiar no menu. O \033[32mENTER\033[0m para Acessar e digitar e o "
+               "\033[34mESC\033[0m"
+               " para sair do relatorio");
 
         Console(10, 7);
         printf("\033[35m1. VENDA\033[0m");
@@ -36,9 +39,9 @@ void FluxoDeCaixa() {
         coluna = 8;
         Console(coluna, linha);
         printf("➤");
-        
-            setvbuf(stdin, NULL, _IONBF,0);
-            tecla = getch();
+
+        setvbuf(stdin, NULL, _IONBF, 0);
+        tecla = getch();
 
         do
         {
@@ -46,24 +49,26 @@ void FluxoDeCaixa() {
 
             tecla = getch();
 
-            if (tecla == 13) {
-                switch (escolha) {
-                    case 1:
-                        // Função para processar a venda
-                        fluxoDeVendas();
-                        break;
-                    case 2:
-                        // Função para cancelar uma venda
-                        cancelVendas();
-                        break;
-                    case 3:
-                        // Função para listar vendas
-                        listVendas();
-                        break;
-                    case 0:
-                        // Função para sair ou retornar ao menu anterior
-                        printf("Saindo...\n");
-                        break;
+            if (tecla == 13)
+            {
+                switch (escolha)
+                {
+                case 1:
+                    // Função para processar a venda
+                    fluxoDeVendas();
+                    break;
+                case 2:
+                    // Função para cancelar uma venda
+                    cancelVendas();
+                    break;
+                case 3:
+                    // Função para listar vendas
+                    listVendas();
+                    break;
+                case 0:
+                    // Função para sair ou retornar ao menu anterior
+                    printf("Saindo...\n");
+                    break;
                 }
             }
 
@@ -101,90 +106,80 @@ void FluxoDeCaixa() {
             Console(coluna, linha);
             printf("➤");
 
-           
-        }while(tecla != 27);
+        } while (tecla != 27);
 
-      return MenuDeGestaoHortifrut();
-      
+        return MenuDeGestaoHortifrut();
+
     } while (1);
-    
 }
-
 
 void cancelVendas()
 {
-   int tecla;
-int uid; // trocar a variavel para a variavel correta, o id venda
+    int tecla;
+    int uid; // trocar a variavel para a variavel correta, o id venda
 
-Sleep(10);
-system("CLS");
-borda(120, 30);
-borda(120, 5);
-borda(120, 25);
-borda(120, 28);
-borda(28, 28);
+    Sleep(10);
+    system("CLS");
+    borda(120, 30);
+    borda(120, 5);
+    borda(120, 25);
+    borda(120, 28);
+    borda(28, 28);
 
+    do
+    {
+        Console(30, 1);
+        printf("\033[31m░█▀▀█ ─█▀▀█ ░█▄─░█ ░█▀▀█ ░█▀▀▀ ░█─── ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ ░█▄─░█ ▀▀█▀▀ ░█▀▀▀█");
+        Console(30, 2);
+        printf("░█─── ░█▄▄█ ░█░█░█ ░█─── ░█▀▀▀ ░█─── ░█▄▄█ ░█░█░█ ░█▀▀▀ ░█░█░█ ─░█── ░█──░█ ");
+        Console(30, 3);
+        printf("░█▄▄█ ░█─░█ ░█──▀█ ░█▄▄█ ░█▄▄▄ ░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ ░█──▀█ ─░█── ░█▄▄▄█\033[0m");
+        Console(15, 28);
+        printf("Clica no "
+               "\033[34mESC\033[0m"
+               " para sair do Cancelamento da venda. O \033[32mENTER\033[0m para Confirmar o cancelamento");
 
-do
-{
-	Console(30, 1);
-	printf("\033[31m░█▀▀█ ─█▀▀█ ░█▄─░█ ░█▀▀█ ░█▀▀▀ ░█─── ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ ░█▄─░█ ▀▀█▀▀ ░█▀▀▀█");
-	Console(30, 2);
-	printf("░█─── ░█▄▄█ ░█░█░█ ░█─── ░█▀▀▀ ░█─── ░█▄▄█ ░█░█░█ ░█▀▀▀ ░█░█░█ ─░█── ░█──░█ ");
-	Console(30, 3);
-	printf("░█▄▄█ ░█─░█ ░█──▀█ ░█▄▄█ ░█▄▄▄ ░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ ░█──▀█ ─░█── ░█▄▄▄█\033[0m");
-	Console(15, 28);
-	printf("Clica no " "\033[34mESC\033[0m" " para sair do Cancelamento da venda. O \033[32mENTER\033[0m para Confirmar o cancelamento");
+        Console(2, 26);
+        printf("\033[35mID: \033[0m");
 
+        setvbuf(stdin, NULL, _IONBF, 0);
+        tecla = _getch();
+        if (tecla == 13)
+        {
+            Console(6, 26);
+            scanf_s("%d", &uid);
+        }
+    } while (tecla != 27);
 
-	Console(2, 26);
-	printf("\033[35mID: \033[0m");
-
-
-	setvbuf(stdin, NULL, _IONBF, 0);
-	tecla = _getch();
-	if (tecla == 13) {
-		Console(6, 26);
-		scanf_s("%d", &uid);
-	}
-} while (tecla != 27);
-
-return FluxoDeCaixa();
+    return FluxoDeCaixa();
 }
-
-
-
-
 
 void listVendas()
 {
-	int tecla;
+    int tecla;
 
-	Sleep(10);
-	system("CLS");
-	borda(120, 5);
-	borda(120, 7);
-	
+    Sleep(10);
+    system("CLS");
+    borda(120, 5);
+    borda(120, 7);
 
+    do
+    {
+        Console(25, 1);
+        printf("\033[33m▒█░░░ ▀█▀ ▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█░░▒█ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀▄ ░█▀▀█");
+        Console(25, 2);
+        printf("▒█░░░ ▒█░ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ 　 ▒█░▒█ ▒█▀▀▀ 　 ░▒█▒█░ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▄▄█");
+        Console(25, 3);
+        printf("▒█▄▄█ ▄█▄ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ░░▀▄▀░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█░▒█\033[0m");
+        Console(44, 5);
+        printf("Clica no "
+               "\033[34mESC\033[0m"
+               " para sair da lista.");
 
-	do
-	{
-		Console(25, 1);
-		printf("\033[33m▒█░░░ ▀█▀ ▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ 　 ▒█▀▀▄ ▒█▀▀▀ 　 ▒█░░▒█ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀▄ ░█▀▀█");
-		Console(25, 2);
-		printf("▒█░░░ ▒█░ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ 　 ▒█░▒█ ▒█▀▀▀ 　 ░▒█▒█░ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▄▄█");
-		Console(25, 3);
-		printf("▒█▄▄█ ▄█▄ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ 　 ▒█▄▄▀ ▒█▄▄▄ 　 ░░▀▄▀░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█░▒█\033[0m");
-		Console(44, 5);
-		printf("Clica no " "\033[34mESC\033[0m" " para sair da lista.");
+        setvbuf(stdin, NULL, _IONBF, 0);
+        tecla = _getch();
 
+    } while (tecla != 27);
 
-
-		setvbuf(stdin, NULL, _IONBF, 0);
-		tecla = _getch();
-		
-	} while (tecla != 27);
-
-	return FluxoDeCaixa();
-
+    return FluxoDeCaixa();
 }
