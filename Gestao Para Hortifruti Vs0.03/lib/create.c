@@ -115,11 +115,55 @@ void SalvarProduto(FILE *arquivo, Mercadoria *produto)
     }
 }
 
+void salvarVendasCSV(sales vendas[], int totalVendas) {
+    FILE *arquivoVendas;
+    int idCompra = 1;
+
+    // Verifica se o arquivo existe e cria, se necessário
+    if (!verificarCriarArquivo(ARQUIVO_VENDAS)) {
+        return; // Se não foi possível criar o arquivo, retorna
+    }
+
+    // Abre o arquivo em modo de leitura/escrita
+    arquivoVendas = fopen(ARQUIVO_VENDAS, "r+");
+    if (arquivoVendas == NULL) {
+        perror("Erro ao abrir sales.csv");
+        return;
+    }
+
+    fseek(arquivoVendas, 0, SEEK_END);
+    long tamanho = ftell(arquivoVendas);
+
+    // Se o arquivo não estiver vazio, lê o último ID de compra
+    if (tamanho > 0) {
+        fseek(arquivoVendas, 0, SEEK_SET);
+        char linha[256];
+        while (fgets(linha, sizeof(linha), arquivoVendas)) {
+            sscanf(linha, "%d;", &idCompra);
+        }
+        idCompra++;
+    }
+
+    // Salvar as vendas no arquivo
+    for (int i = 0; i < totalVendas; i++) {
+        vendas[i].itemSale = idCompra++;
+        vendas[i].bloqueado = 'N';
+        fprintf(arquivoVendas, "%d;%d;%d;%.2f;%.2f;%.2f;%s;%c\n",
+                vendas[i].itemSale, vendas[i].UID, vendas[i].productCode,
+                vendas[i].quantity, vendas[i].precoUnitario, vendas[i].total,
+                vendas[i].dateSale, vendas[i].bloqueado);
+    }
+
+    showNotification(L"Vendas salvas com sucesso.\n", MB_ICONINFORMATION);
+    fclose(arquivoVendas);
+}
+
 void fluxoDeVendas() {
     int escolha, linha, coluna, tecla;
     int linhaAtual = 5; // Começa abaixo do cabeçalho
-    sales vendas;
-    vendas.total = 0;
+    sales vendas[MAX_VENDAS];
+    int totalVendas = 0;
+    float subtotal = 0.0;
     Mercadoria produto;
     FILE *arquivo;
 
@@ -163,6 +207,10 @@ void fluxoDeVendas() {
     Console(11, 26);
     printf("\033[35mQUANTIDADE: \033[0m");
 
+    // Botão Confirmar Compra
+    Console(100, 26);
+    printf("\033[32mCONFIRMAR COMPRA\033[0m");
+
     escolha = 1;
     linha = 26;
     coluna = 6;
@@ -176,12 +224,12 @@ void fluxoDeVendas() {
         if (tecla == ENTER) {
             if (escolha == 1) {
                 Console(6, 26);
-                scanf("%d", &vendas.productCode);
+                scanf("%d", &vendas[totalVendas].productCode);
             }
 
             if (escolha == 2) {
                 Console(26, 26);
-                scanf("%f", &vendas.quantity);
+                scanf("%f", &vendas[totalVendas].quantity);
 
                 // Abrir o arquivo de produtos e buscar o produto
                 arquivo = fopen(ARQUIVO_ESTOQUE, "r");
@@ -191,35 +239,49 @@ void fluxoDeVendas() {
                 }
 
                 // Buscar o produto pelo ID
-                if (BuscarProdutoPorID(arquivo, vendas.productCode, &produto)) {
+                if (BuscarProdutoPorID(arquivo, vendas[totalVendas].productCode, &produto)) {
                     // Exibir os dados do produto na linha atual
                     Console(30, linhaAtual);
                     printf("%d", produto.UID);
                     Console(38, linhaAtual);
                     printf("%s", produto.nome);
                     Console(59, linhaAtual);
-                    printf("%.2f", vendas.quantity); // Quantidade informada pelo usuário
+                    printf("%.2f", vendas[totalVendas].quantity); // Quantidade informada pelo usuário
                     Console(72, linhaAtual);
                     printf("%s", produto.Medida);
                     Console(79, linhaAtual);
                     printf("%.2f", produto.preco);
                     Console(88, linhaAtual);
-                    float totalProduto = produto.preco * vendas.quantity;
+                    float totalProduto = produto.preco * vendas[totalVendas].quantity;
                     printf("%.2f", totalProduto);
 
                     // Atualizar o subtotal
-                    vendas.total += totalProduto;
+                    subtotal += totalProduto;
                     Console(100, 5);
-                    printf("\033[33m%.2f\033[0m", vendas.total);
+                    printf("\033[33m%.2f\033[0m", subtotal);
+
+                    // Armazenar a venda no array
+                    vendas[totalVendas].UID = produto.UID;
+                    vendas[totalVendas].precoUnitario = produto.preco;
+                    vendas[totalVendas].total = totalProduto;
+                    vendas[totalVendas].dateSale = obterDataAtual(); // Data da venda (exemplo)
+                    totalVendas++;
 
                     // Mover para a próxima linha para o próximo produto
                     linhaAtual++;
                 } else {
                     Console(30, linhaAtual);
-                    printf("Produto não encontrado.");
+                    showNotification(L"Produto não encontrado.", MB_ICONINFORMATION);
                 }
 
                 fclose(arquivo);  // Fechar o arquivo após o uso
+            }
+
+            // Confirmar compra
+            if (escolha == 3) {
+                // Aqui você pode adicionar o código para salvar no arquivo CSV
+                salvarVendasCSV(vendas, totalVendas);
+                printf("Compra confirmada e salva no arquivo CSV!\n");
             }
         } else if (tecla == ESC) {
             return FluxoDeCaixa();
@@ -232,11 +294,12 @@ void fluxoDeVendas() {
             if (tecla == 77) escolha--;
             else if (tecla == 75) escolha++;
 
-            if (escolha < 1) escolha = 2;
-            else if (escolha > 2) escolha = 1;
+            if (escolha < 1) escolha = 3;
+            else if (escolha > 3) escolha = 1;
 
             if (escolha == 1) { coluna = 6; linha = 26; }
             else if (escolha == 2) { coluna = 23; linha = 26; }
+            else if (escolha == 3) { coluna = 100; linha = 26; }
             Console(coluna, linha);
             printf(" ");
         }

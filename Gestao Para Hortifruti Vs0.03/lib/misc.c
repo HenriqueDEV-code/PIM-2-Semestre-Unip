@@ -171,10 +171,12 @@ int Validade_Data(const char* data) {
 }
 
 // Função para obter a data atual no formato YYYY-MM-DD
-void obterDataAtual(char* data) {
+char obterDataAtual() {
+    static char data[11]; // Formato YYYY-MM-DD
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     sprintf(data, "%04d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
+    return data;
 }
 
 void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int num_campos)) {
@@ -199,4 +201,20 @@ void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int
     }
 
     fclose(arquivo);
+}
+
+int verificarCriarArquivo(const char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "r");
+    if (arquivo == NULL) {
+        // O arquivo não existe, cria o arquivo
+        arquivo = fopen(nomeArquivo, "w");
+        if (arquivo == NULL) {
+            perror("Erro ao criar o arquivo");
+            return 0; // Retorna 0 em caso de erro
+        }
+        fclose(arquivo);
+    } else {
+        fclose(arquivo);
+    }
+    return 1; // Retorna 1 se o arquivo já existe ou foi criado com sucesso
 }

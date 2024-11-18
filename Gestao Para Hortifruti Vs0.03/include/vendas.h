@@ -3,15 +3,17 @@
 #define SALES_H
 #define ARQUIVO_VENDAS "sales.csv"
 #define MAX_NOME 101
+#define MAX_VENDAS 100
 
 typedef struct {
     int UID;
-    int numberSale;
+    int itemSale;
     int productCode;
     float quantity;
     float precoUnitario;
     float total;
-    char dateSale[11];  // Formato: YYYY-MM-DD
+    char dateSale;  // Formato: YYYY-MM-DD
+    char bloqueado;
 } sales;
 
 void fluxoDeVendas();
