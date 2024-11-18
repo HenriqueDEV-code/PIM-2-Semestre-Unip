@@ -140,36 +140,25 @@ void leituraTodosProdutos(char** campos, int num_campos) {
     char* medida = campos[4];
     int QNT_Estoque = atoi(campos[5]);
     char* data_validade = campos[6];
-    Console(5, 10);
-    printf("\033[31m-----------------------------------------\033[0m");
-    Console(5, 11);
-    printf("\033[36mID:\033[0m %d", UID);
-    Console(5, 12);
-    printf("\033[36mNOME:\033[0m %s", nome);
-    Console(5, 13);
-    printf("\033[36mCATEGORIA:\033[0m %s", grupo);
-    Console(5, 14);
-    printf("\033[36mPREÇO:\033[0m R\033[32m$\033[0m %.2f", preco);
-    Console(5, 15);
-    printf("\033[36mUNIDADE DE MEDIDA:\033[0m %s", medida);
-    Console(5, 16);
-    printf("\033[36mESTOQUE:\033[0m %d", QNT_Estoque);
-    Console(5, 17);
-    printf("\033[36mVALIDADE:\033[0m %s", data_validade);
-    Console(5, 18);
-    printf("\033[31m-----------------------------------------\033[0m");
-    Console(5, 19);
-    printf("\033[32mPressione Enter para continuar...\033[0m");
+    printf("\t\033[31m-----------------------------------------\n\033[0m");
+    printf("\tID: %d\n", UID);
+    printf("\tNOME: %s\n", nome);
+    printf("\tCATEGORIA: %s\n", grupo);
+    printf("\tPREÇO: R\033[32m$\033[0m %.2f\n", preco);
+    printf("\tUNIDADE DE MEDIDA: %s\n", medida);
+    printf("\tESTOQUE: %d\n", QNT_Estoque);
+    printf("\tVALIDADE: %s\n", data_validade);
+    printf("\t\033[31m-----------------------------------------\n\033[0m");
+
+    printf("\t\033[32mPressione Enter para continuar...\n\033[0m");
     getchar();
 }
 
 void ListarProduto() {
     Sleep(500);
-    system("CLS");
-    borda(120,30);
-    borda(120,5);
+	system("CLS");
     Console(5, 9);
-    printf("\033[32mLista de produtos cadastrados:\n\033[0m");
+    printf("\033[32m   Lista de produtos cadastrados:\n\033[0m");
 
     readCSV(ARQUIVO_ESTOQUE, leituraTodosProdutos);
 }

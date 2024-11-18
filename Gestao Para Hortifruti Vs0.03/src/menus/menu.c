@@ -31,7 +31,7 @@ void MenuDeGestaoHortifrut() {
         Console(11, 13); printf("FLUXO DE CAIXA 💳");
         Console(11, 15); printf("RELATORIO GERAL DO SISTEMA 📊");
         Console(11, 17); printf("QUEM SOMOS 📎");
-        Console(11, 19); printf("SUGESTOES 🗣");
+        Console(11, 19); printf("FEEDBACK 🗣");
         Console(11, 21); printf("AREA DE DOACOES 🎁");
 
         Console(12, 28);
@@ -55,7 +55,7 @@ void MenuDeGestaoHortifrut() {
                 if (escolha == 2) FluxoDeCaixa();
                 if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
                 if (escolha == 4) QUEMSOMOS();
-                if (escolha == 5) break;
+                if (escolha == 5) FeedBack();
                 if (escolha == 6) break;
                 if (escolha == 0) exit(0);
                 break;
@@ -164,4 +164,116 @@ void QUEMSOMOS(void)
 
         
     return MenuDeGestaoHortifrut();
+}
+
+
+void FeedBack(void)
+{
+	
+	int tecla, escolha, linha, coluna;
+	int satisfacao1a5;
+	char pergunta1[101];
+	char pergunta2[101];
+	char pergunta3[101];
+	char pergunta4[101];
+	char SalvarSouN[2];
+	Sleep(10);
+	system("CLS");
+	borda(120, 30);
+	borda(120, 8);
+	borda(120, 28);
+	
+	do
+	{
+
+
+		Console(30, 1);
+		printf("\033[33m███████╗███████╗███████╗██████╗░██████╗░░█████╗░░█████╗░██╗░░██╗");
+		Console(30, 2);
+		printf("██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║░██╔");
+		Console(30, 3);
+		printf("█████╗░░█████╗░░█████╗░░██║░░██║██████╦╝███████║██║░░╚═╝█████═╝");
+		Console(30, 4);
+		printf("██╔══╝░░██╔══╝░░██╔══╝░░██║░░██║██╔══██╗██╔══██║██║░░██╗██╔═██╗");
+		Console(30, 5);
+		printf("██║░░░░░███████╗███████╗██████╔╝██████╦╝██║░░██║╚█████╔╝██║░╚██");
+		Console(30, 6);
+		printf("╚═╝░░░░░╚══════╝╚══════╝╚═════╝░╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝\033[0m");
+		Console(40, 28);
+		printf("Clica no " "\033[34mESC\033[0m" " para sair da aba FeedBack.");
+		Console(5, 9);
+		printf("Ola! tudo bem?");
+		Console(5, 10);
+		printf("Somos a \033[36mConnection and Solution ©\033[0m e gostariamos de compartilhar o feedback sobre a ultima sessao e saber");
+		Console(5, 11);
+		printf("mum pouco sobre sua experiencia com o sistema. Para isso, gostariamos de pergunta:");
+		Console(4, 13);
+		printf("\033[33m(Por favor, utilize uma escala de 1 a 5, onde \033[31m1\033[33m representa \"muito insatisfeito\" e \033[32m5 \033[33mrepresenta \" Muito satisfeito\")");
+		Console(5, 14);
+		printf("\033[33mQUAL O SEU NIVEL DE SATISFACAO COM O SISTEMA? : \033[0m");
+		Console(5, 16);
+		printf("Alem disso, para nos ajudar a aprimorar o sistema, pedimos que voce compartilhe algumas observacoes:");
+		Console(5, 18);
+		printf("1. \033[36mQuais aspectos voce mais gostou? \033[0m");
+		Console(5, 20);
+		printf("2. \033[36mQuais aspectos voce acha que poderiam ser melhorados? \033[0m");
+		Console(5, 22);
+		printf("3. \033[36mHa algum recurso que voce gostaria de ver adcionado? \033[0m");
+		Console(5, 24);
+		printf("4. \033[36mAlgum outro comentario ou sugestao? \033[0m");
+		Console(99, 26);
+		printf("SALVAR? (\033[32mS\033[0m/\033[31mN\033[0m):");
+
+
+		escolha = 1;
+		linha = 14;
+		coluna = 53;
+		Console(coluna, linha);
+		printf(" ");
+
+		while (1)
+		{
+			setvbuf(stdin, NULL, _IONBF, 0);
+			tecla = _getch();
+            
+			if (tecla == 13)
+			{
+				if (escolha == 1) { scanf_s("%d", &satisfacao1a5); }
+				if (escolha == 2) { fgets(pergunta1, sizeof(pergunta1), stdin); }
+				if (escolha == 3) { fgets(pergunta2, sizeof(pergunta2), stdin); }
+				if (escolha == 4) { fgets(pergunta3, sizeof(pergunta3), stdin); }
+				if (escolha == 5) { fgets(pergunta4, sizeof(pergunta4), stdin); }
+				if (escolha == 6) { fgets(SalvarSouN, sizeof(SalvarSouN), stdin); }
+			}
+			else if (tecla == 27)
+			{
+				return MenuDeGestaoHortifrut();
+			}
+
+			if (tecla == 72 || tecla == 80)
+			{
+				Console(coluna, linha);
+				printf(" ");
+
+				if (tecla == 72) escolha--;
+				else if (tecla == 80) escolha++;
+
+				if (escolha < 1) escolha = 6;
+				else if (escolha > 6) escolha = 1;
+
+				if (escolha == 1) { coluna = 53; linha = 14; }
+				else if (escolha == 2) { coluna = 41; linha = 18; }
+				else if (escolha == 3) { coluna = 62; linha = 20; }
+				else if (escolha == 4) { coluna = 61; linha = 22; }
+				else if (escolha == 5) { coluna = 44; linha = 24; }
+				else if (escolha == 6) { coluna = 113; linha = 26; }
+				Console(coluna, linha);
+				printf(" ");
+			}
+
+		}
+
+	
+		
+	} while (1);
 }
