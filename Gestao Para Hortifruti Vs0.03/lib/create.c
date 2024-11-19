@@ -291,15 +291,15 @@ void fluxoDeVendas() {
             Console(coluna, linha);
             printf(" ");
 
-            if (tecla == 77) escolha--;
-            else if (tecla == 75) escolha++;
+            if (tecla == 75) escolha--;
+            else if (tecla == 77) escolha++;
 
             if (escolha < 1) escolha = 3;
             else if (escolha > 3) escolha = 1;
 
             if (escolha == 1) { coluna = 6; linha = 26; }
             else if (escolha == 2) { coluna = 23; linha = 26; }
-            else if (escolha == 3) { coluna = 100; linha = 26; }
+            else if (escolha == 3) { coluna = 98; linha = 26; }
             Console(coluna, linha);
             printf(" ");
         }
