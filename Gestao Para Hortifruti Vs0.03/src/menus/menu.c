@@ -53,10 +53,10 @@ void MenuDeGestaoHortifrut() {
             if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 2) FluxoDeCaixa();
-                if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
+                if (escolha == 3) RelatorioDeSistema();
                 if (escolha == 4) QUEMSOMOS();
                 if (escolha == 5) FeedBack();
-                if (escolha == 6) break;
+                if (escolha == 6) Doacoes();
                 if (escolha == 0) exit(0);
                 break;
             }
@@ -98,6 +98,12 @@ void RelatorioDeSistema() {
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
         
+        Console(10,10);
+        printf("° VENDAS ");
+        Console(10,15);
+        printf("° ESTOQUE ");
+        Console(10, 20);
+        printf("° VENDAS POR PRODUTOS ");
 
 
 
@@ -307,7 +313,7 @@ void Doacoes() {
 
 	    
 
-	return fluxoDeVendas();
+	return MenuDeGestaoHortifrut();
 
 
 }
