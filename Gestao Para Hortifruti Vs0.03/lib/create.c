@@ -208,7 +208,7 @@ void fluxoDeVendas() {
     printf("\033[35mQUANTIDADE: \033[0m");
 
     // Botão Confirmar Compra
-    Console(100, 26);
+    Console(98, 26);
     printf("\033[32mCONFIRMAR COMPRA\033[0m");
 
     escolha = 1;
