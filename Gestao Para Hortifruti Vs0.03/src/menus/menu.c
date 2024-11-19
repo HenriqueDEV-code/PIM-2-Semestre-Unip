@@ -277,3 +277,37 @@ void FeedBack(void)
 		
 	} while (1);
 }
+
+
+void Doacoes() {
+
+	int tecla;
+	Sleep(10);
+	system("CLS");
+	borda(120, 30);
+	borda(120, 28); 
+	borda(120, 7);
+
+	do {
+		Console(35, 2);
+		printf("\033[33m▒█▀▀▄ ▒█▀▀▀█ ░█▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀▀ ▒█▀▀▀█");
+		Console(35, 3);
+		printf("▒█░▒█ ▒█░░▒█ ▒█▄▄█ ▒█░░░ ▒█░░▒█ ▒█▀▀▀ ░▀▀▀▄▄");
+		Console(35, 4);
+		printf("▒█▄▄▀ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄█ ▒█▄▄▄█ ▒█▄▄▄ ▒█▄▄▄█\033[0m");
+		Console(44, 28);
+		printf("Clica no " "\033[34mESC\033[0m" " para sair da Doacao");
+
+
+		setvbuf(stdin, NULL, _IONBF, 0);
+
+		tecla = getch();
+
+	} while (tecla != 27); // fim do
+
+	    
+
+	return fluxoDeVendas();
+
+
+}
