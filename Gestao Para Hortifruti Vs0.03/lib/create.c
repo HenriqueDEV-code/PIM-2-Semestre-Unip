@@ -204,7 +204,7 @@ void fluxoDeVendas() {
     // Menu inferior para entrada de dados
     Console(2, 26);
     printf("\033[35mID: \033[0m");
-    Console(11, 26);
+    Console(29, 26);
     printf("\033[35mQUANTIDADE: \033[0m");
 
     // Botão Confirmar Compra
@@ -228,7 +228,7 @@ void fluxoDeVendas() {
             }
 
             if (escolha == 2) {
-                Console(23, 26);
+                Console(41, 26);
                 scanf("%f", &vendas[totalVendas].quantity);
 
                 // Abrir o arquivo de produtos e buscar o produto
@@ -299,7 +299,7 @@ void fluxoDeVendas() {
             else if (escolha > 3) escolha = 1;
 
             if (escolha == 1) { coluna = 6; linha = 26; }
-            else if (escolha == 2) { coluna = 23; linha = 26; }
+            else if (escolha == 2) { coluna = 41; linha = 26; }
             else if (escolha == 3) { coluna = 115; linha = 26; }
             Console(coluna, linha);
             printf(" ");
