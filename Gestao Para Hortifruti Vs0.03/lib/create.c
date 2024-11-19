@@ -228,7 +228,7 @@ void fluxoDeVendas() {
             }
 
             if (escolha == 2) {
-                Console(26, 26);
+                Console(23, 26);
                 scanf("%f", &vendas[totalVendas].quantity);
 
                 // Abrir o arquivo de produtos e buscar o produto
@@ -281,6 +281,7 @@ void fluxoDeVendas() {
             if (escolha == 3) {
                 // Aqui você pode adicionar o código para salvar no arquivo CSV
                 salvarVendasCSV(vendas, totalVendas);
+                 Console(38, 28);
                 printf("Compra confirmada e salva no arquivo CSV!\n");
             }
         } else if (tecla == ESC) {
@@ -299,7 +300,7 @@ void fluxoDeVendas() {
 
             if (escolha == 1) { coluna = 6; linha = 26; }
             else if (escolha == 2) { coluna = 23; linha = 26; }
-            else if (escolha == 3) { coluna = 98; linha = 26; }
+            else if (escolha == 3) { coluna = 115; linha = 26; }
             Console(coluna, linha);
             printf(" ");
         }
