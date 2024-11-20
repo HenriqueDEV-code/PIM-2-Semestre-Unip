@@ -7,7 +7,6 @@ void EntradaMercadoria(void);
 void RelatorioDeSistema(void);
 void QUEMSOMOS(void);
 void MenuDeGestaoHortifrut(void);
-
 void FeedBack(void);
 void Doacoes(void);
 

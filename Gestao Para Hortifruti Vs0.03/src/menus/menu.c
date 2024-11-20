@@ -303,7 +303,7 @@ void Doacoes() {
 		printf("▒█▄▄▀ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄█ ▒█▄▄▄█ ▒█▄▄▄ ▒█▄▄▄█\033[0m");
 		Console(44, 28);
 		printf("Clica no " "\033[34mESC\033[0m" " para sair da Doacao");
-
+        
 
 		setvbuf(stdin, NULL, _IONBF, 0);
 

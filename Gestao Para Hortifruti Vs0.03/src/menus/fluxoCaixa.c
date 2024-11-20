@@ -49,7 +49,7 @@ void FluxoDeCaixa()
 
             tecla = getch();
 
-            if (tecla == 13)
+            if (tecla == ENTER)
             {
                 switch (escolha)
                 {
@@ -106,7 +106,7 @@ void FluxoDeCaixa()
             Console(coluna, linha);
             printf("➤");
 
-        } while (tecla != 27);
+        } while (tecla != ESC);
 
         return MenuDeGestaoHortifrut();
 
@@ -144,12 +144,12 @@ void cancelVendas()
 
         setvbuf(stdin, NULL, _IONBF, 0);
         tecla = _getch();
-        if (tecla == 13)
+        if (tecla == ENTER)
         {
             Console(6, 26);
             scanf_s("%d", &uid);
         }
-    } while (tecla != 27);
+    } while (tecla != ESC);
 
     return FluxoDeCaixa();
 }

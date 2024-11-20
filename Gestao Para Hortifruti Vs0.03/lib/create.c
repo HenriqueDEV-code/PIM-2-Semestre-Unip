@@ -265,10 +265,11 @@ void fluxoDeVendas() {
                     vendas[totalVendas].precoUnitario = produto.preco;
                     vendas[totalVendas].total = totalProduto;
                     vendas[totalVendas].dateSale = obterDataAtual(); // Data da venda (exemplo)
-                    totalVendas++;
 
                     // Mover para a próxima linha para o próximo produto
                     linhaAtual++;
+                    totalVendas++;
+                    
                 } else {
                     Console(30, linhaAtual);
                     showNotification(L"Produto não encontrado.", MB_ICONINFORMATION);
