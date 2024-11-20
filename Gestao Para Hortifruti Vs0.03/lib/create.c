@@ -228,7 +228,7 @@ void fluxoDeVendas() {
             }
 
             if (escolha == 2) {
-                Console(41, 26);
+                Console(42, 26);
                 scanf("%f", &vendas[totalVendas].quantity);
 
                 // Abrir o arquivo de produtos e buscar o produto
