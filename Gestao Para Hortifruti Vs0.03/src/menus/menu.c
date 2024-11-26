@@ -53,10 +53,10 @@ void MenuDeGestaoHortifrut() {
             if (tecla == ENTER) {
                 if (escolha == 1) EntradaMercadoria();
                 if (escolha == 2) FluxoDeCaixa();
-                if (escolha == 3) RelatorioDeSistema();  /* Coloquei break ate criar a funcao */
+                if (escolha == 3) RelatorioDeSistema();
                 if (escolha == 4) QUEMSOMOS();
                 if (escolha == 5) FeedBack();
-                if (escolha == 6) break;
+                if (escolha == 6) Doacoes();
                 if (escolha == 0) exit(0);
                 break;
             }
@@ -98,6 +98,12 @@ void RelatorioDeSistema() {
         Console(44,28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
         
+        Console(10,10);
+        printf("° VENDAS ");
+        Console(10,15);
+        printf("° ESTOQUE ");
+        Console(10, 20);
+        printf("° VENDAS POR PRODUTOS ");
 
 
 
@@ -276,4 +282,38 @@ void FeedBack(void)
 	
 		
 	} while (1);
+}
+
+
+void Doacoes() {
+
+	int tecla;
+	Sleep(10);
+	system("CLS");
+	borda(120, 30);
+	borda(120, 28); 
+	borda(120, 7);
+
+	do {
+		Console(35, 2);
+		printf("\033[33m▒█▀▀▄ ▒█▀▀▀█ ░█▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀▀ ▒█▀▀▀█");
+		Console(35, 3);
+		printf("▒█░▒█ ▒█░░▒█ ▒█▄▄█ ▒█░░░ ▒█░░▒█ ▒█▀▀▀ ░▀▀▀▄▄");
+		Console(35, 4);
+		printf("▒█▄▄▀ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄█ ▒█▄▄▄█ ▒█▄▄▄ ▒█▄▄▄█\033[0m");
+		Console(44, 28);
+		printf("Clica no " "\033[34mESC\033[0m" " para sair da Doacao");
+        
+
+		setvbuf(stdin, NULL, _IONBF, 0);
+
+		tecla = getch();
+
+	} while (tecla != 27); // fim do
+
+	    
+
+	return MenuDeGestaoHortifrut();
+
+
 }

@@ -255,11 +255,11 @@ void fluxoDeVendas() {
     // Menu inferior para entrada de dados
     Console(2, 26);
     printf("\033[35mID: \033[0m");
-    Console(11, 26);
+    Console(29, 26);
     printf("\033[35mQUANTIDADE: \033[0m");
 
     // Botão Confirmar Compra
-    Console(100, 26);
+    Console(98, 26);
     printf("\033[32mCONFIRMAR COMPRA\033[0m");
 
     escolha = 1;
@@ -281,8 +281,7 @@ void fluxoDeVendas() {
                 scanf("%d", &vendas[totalVendas].productCode);
             }
 
-            if (escolha == 2)
-            {
+            if (escolha == 2) {
                 Console(26, 26);
                 scanf("%f", &vendas[totalVendas].quantity);
 
@@ -342,7 +341,7 @@ void fluxoDeVendas() {
             if (escolha == 3)
             {
                 salvarVendasCSV(vendas, totalVendas);
-                FluxoDeCaixa();
+                printf("Compra confirmada e salva no arquivo CSV!\n");
             }
         }
         else if (tecla == ESC)
@@ -355,31 +354,17 @@ void fluxoDeVendas() {
             Console(coluna, linha);
             printf(" ");
 
-            if (tecla == 77)
-                escolha--;
-            else if (tecla == 75)
-                escolha++;
+            if (tecla == 77) escolha--;
+            else if (tecla == 75) escolha++;
 
             if (escolha < 1)
                 escolha = 3;
             else if (escolha > 3)
                 escolha = 1;
 
-            if (escolha == 1)
-            {
-                coluna = 6;
-                linha = 26;
-            }
-            else if (escolha == 2)
-            {
-                coluna = 23;
-                linha = 26;
-            }
-            else if (escolha == 3)
-            {
-                coluna = 100;
-                linha = 26;
-            }
+            if (escolha == 1) { coluna = 6; linha = 26; }
+            else if (escolha == 2) { coluna = 23; linha = 26; }
+            else if (escolha == 3) { coluna = 100; linha = 26; }
             Console(coluna, linha);
             printf(" ");
         }
