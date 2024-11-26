@@ -12,7 +12,7 @@ typedef struct {
     float quantity;
     float precoUnitario;
     float total;
-    char dateSale;  // Formato: YYYY-MM-DD
+    char dateSale[11];  // Formato: YYYY-MM-DD
     char bloqueado;
 } sales;
 
