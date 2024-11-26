@@ -341,7 +341,7 @@ void fluxoDeVendas() {
             if (escolha == 3)
             {
                 salvarVendasCSV(vendas, totalVendas);
-                printf("Compra confirmada e salva no arquivo CSV!\n");
+                FluxoDeCaixa();
             }
         }
         else if (tecla == ESC)
