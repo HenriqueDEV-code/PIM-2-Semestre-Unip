@@ -130,6 +130,7 @@ int obterProximoIdCompra(FILE *arquivoVendas) {
             ch = fgetc(arquivoVendas);
 
             if (ch == '\n') {
+                fseek(arquivoVendas, 1, SEEK_CUR); // Avançar para o início da linha
                 break;
             }
             fseek(arquivoVendas, -1, SEEK_CUR);
@@ -150,52 +151,84 @@ int obterProximoIdCompra(FILE *arquivoVendas) {
 
 void salvarVendasCSV(sales vendas[], int totalVendas) {
     FILE *arquivoVendas;
+    FILE *arquivoEstoque;
+    FILE *arquivoEstoqueTemp;
 
-    // Verificar ou criar o arquivo
-    if (!verificarCriarArquivo(ARQUIVO_VENDAS)) {
+    // Verificar ou criar os arquivos
+    if (!verificarCriarArquivo(ARQUIVO_VENDAS) || !verificarCriarArquivo(ARQUIVO_ESTOQUE)) {
         return;
     }
 
-    // Abrir o arquivo em modo de append
+    // Abrir o arquivo de vendas em modo de append
     arquivoVendas = fopen(ARQUIVO_VENDAS, "a");
     if (arquivoVendas == NULL) {
-        perror("Erro ao abrir o arquivo de vendas");
+        fprintf(stderr, "Erro ao abrir o arquivo de vendas\n");
         return;
     }
 
-    int itemSale = 1; // Contador para os itens de uma mesma compra
+    // Abrir o arquivo de estoque em modo de leitura e um arquivo temporário para escrita
+    arquivoEstoque = fopen(ARQUIVO_ESTOQUE, "r");
+    arquivoEstoqueTemp = fopen("produtos_temp.csv", "w");
+    if (arquivoEstoque == NULL || arquivoEstoqueTemp == NULL) {
+        fprintf(stderr, "Erro ao abrir os arquivos de estoque\n");
+        fclose(arquivoVendas);
+        return;
+    }
 
+    // Processar cada venda
     for (int i = 0; i < totalVendas; i++) {
         // Validar os dados essenciais antes de salvar
         if (vendas[i].UID <= 0 || vendas[i].productCode <= 0 || vendas[i].quantity <= 0 || vendas[i].precoUnitario <= 0) {
-            fprintf(stderr, "Erro: Dados inválidos para o item %d na compra %d\n", itemSale, vendas[i].UID);
+            fprintf(stderr, "Erro: Dados inválidos para o item %d na compra %d\n", i, vendas[i].UID);
             continue; // Pule este item e prossiga com os demais
         }
 
         // Garantir que o bloqueado está com o valor padrão 'N'
         vendas[i].bloqueado = 'N';
 
-        // Escrever os dados no arquivo
-        fprintf(arquivoVendas, "%d;%d;%d;%.2f;%.2f;%.2f;%s;%c\n", // ;%d;%.2f;%.2f;%.2f;%s;%c\n
+        // Escrever os dados no arquivo de vendas
+        fprintf(arquivoVendas, "%d;%d;%d;%.2f;%.2f;%.2f;%s;%c\n",
                 vendas[i].UID,           // ID da compra
-                i,      // Item da compra
-                vendas[i].productCode,   // Código do produto --ok
+                i,                       // Item da compra
+                vendas[i].productCode,   // Código do produto
                 vendas[i].quantity,      // Quantidade
                 vendas[i].precoUnitario, // Preço unitário
                 vendas[i].total,         // Total do item
                 vendas[i].dateSale,      // Data da venda
                 vendas[i].bloqueado      // Status bloqueado
         );
-
-        // Se o próximo item pertence a uma nova compra, reiniciar o contador `itemSale`
-        if (i + 1 < totalVendas && vendas[i + 1].UID != vendas[i].UID) {
-            itemSale = 1;
-        } else {
-            itemSale++;
-        }
     }
 
+    // Atualizar o estoque
+    char linha[256];
+    while (fgets(linha, sizeof(linha), arquivoEstoque)) {
+        int codigoProduto, quantidadeEstoque;
+        char nomeProduto[50], categoria[50], unidade[10], validade[11];
+        float precoUnitario;
+
+        sscanf(linha, "%d;%49[^;];%49[^;];%f;%9[^;];%d;%10[^\n]",
+               &codigoProduto, nomeProduto, categoria, &precoUnitario, unidade, &quantidadeEstoque, validade);
+
+        // Verificar se o produto foi vendido e atualizar a quantidade
+        for (int i = 0; i < totalVendas; i++) {
+            if (vendas[i].productCode == codigoProduto) {
+                quantidadeEstoque -= vendas[i].quantity;
+            }
+        }
+
+        // Escrever a linha atualizada no arquivo temporário
+        fprintf(arquivoEstoqueTemp, "%d;%s;%s;%.2f;%s;%d;%s\n",
+                codigoProduto, nomeProduto, categoria, precoUnitario, unidade, quantidadeEstoque, validade);
+    }
+
+    // Fechar os arquivos
     fclose(arquivoVendas);
+    fclose(arquivoEstoque);
+    fclose(arquivoEstoqueTemp);
+
+    // Substituir o arquivo de estoque original pelo temporário
+    remove(ARQUIVO_ESTOQUE);
+    rename("produtos_temp.csv", ARQUIVO_ESTOQUE);
 
     // Notificação de sucesso
     showNotification(L"Vendas salvas com sucesso.\n", MB_ICONINFORMATION);

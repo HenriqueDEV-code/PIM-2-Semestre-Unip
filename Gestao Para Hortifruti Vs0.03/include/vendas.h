@@ -19,5 +19,7 @@ typedef struct {
 void fluxoDeVendas();
 void cancelVendas();
 void listVendas();
+void atualizarEstoque();
+void gerarRelatorioVendas(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID);
 
 #endif 

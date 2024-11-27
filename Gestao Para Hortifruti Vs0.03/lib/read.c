@@ -2,6 +2,7 @@
 #include <string.h>
 #include <windows.h>
 #include "../include/product.h"
+#include "../include/vendas.h"
 
 void processarProduto(char** campos, int num_campos, void* dados_ptr) {
     if (num_campos != 7) {
@@ -161,4 +162,57 @@ void ListarProduto() {
     printf("\033[32m   Lista de produtos cadastrados:\n\033[0m");
 
     readCSV(ARQUIVO_ESTOQUE, leituraTodosProdutos);
+}
+
+// Função para gerar relatório parametrizado
+void gerarRelatorioVendas(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID) {
+    FILE *arquivo = fopen(ARQUIVO_VENDAS, "r");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo de vendas");
+        return;
+    }
+
+    char linha[256];
+    int encontrouVendas = 0;
+
+    // Cabeçalho do relatório
+    printf("=========================================================================================\n");
+    printf("| %-5s | %-5s | %-10s | %-10s | %-10s | %-10s | %-10s | %-8s |\n", 
+           "UID", "ITEM", "PRODUTO", "QTDE", "PRECO", "TOTAL", "DATA", "STATUS");
+    printf("=========================================================================================\n");
+
+    // Ler cada linha do arquivo
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        sales venda;
+        sscanf(linha, "%d;%d;%d;%f;%f;%f;%10[^;];%c", 
+               &venda.UID, &venda.itemSale, &venda.productCode, &venda.quantity,
+               &venda.precoUnitario, &venda.total, venda.dateSale, &venda.bloqueado);
+
+        // Aplicar os filtros
+        int incluir = 1;
+        if (dataInicio && strcmp(venda.dateSale, dataInicio) < 0) incluir = 0;
+        if (dataFim && strcmp(venda.dateSale, dataFim) > 0) incluir = 0;
+        if (filtroProduto > 0 && venda.productCode != filtroProduto) incluir = 0;
+        if (filtroUID > 0 && venda.UID != filtroUID) incluir = 0;
+
+        if (incluir) {
+            encontrouVendas = 1;
+            // Imprimir a linha do relatório
+            printf("| %-5d | %-5d | %-10d | %-10.2f | %-10.2f | %-10.2f | %-10s | %-8c |\n", 
+                   venda.UID, venda.itemSale, venda.productCode, venda.quantity, 
+                   venda.precoUnitario, venda.total, venda.dateSale, venda.bloqueado);
+        }
+    }
+
+    fclose(arquivo);
+
+    if (!encontrouVendas) {
+        printf("| Nenhuma venda encontrada com os filtros especificados.                             |\n");
+    }
+    printf("=========================================================================================\n");
+
+    // Aguardar o pressionamento de uma tecla antes de sair
+    printf("\nPressione qualquer tecla para retornar...");
+    getch();
+    system("CLS");
 }

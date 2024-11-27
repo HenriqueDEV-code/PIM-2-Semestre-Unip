@@ -81,39 +81,86 @@ void MenuDeGestaoHortifrut() {
 
 void RelatorioDeSistema() {
     int tecla;
-   
+    int opcao = 0; // Índice da opção selecionada
+    const int totalOpcoes = 3; // Número total de opções
+
     Sleep(10);
     system("CLS");
-    borda(120,30);
-    borda(120,28); 
+    borda(120, 30);
+    borda(120, 28);
     borda(120, 7);
+
     do {
-        
-        Console(35,2);
+        Console(35, 2);
         printf("\033[33m▒█▀▀█ ▒█▀▀▀ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▒█▀▀▀█ ▒█▀▀█ ▀█▀ ▒█▀▀▀█");
-        Console(35,3);
+        Console(35, 3);
         printf("▒█▄▄▀ ▒█▀▀▀ ▒█░░░ ▒█▄▄█ ░▒█░░ ▒█░░▒█ ▒█▄▄▀ ▒█░ ▒█░░▒█");
-        Console(35,4);
+        Console(35, 4);
         printf("▒█░▒█ ▒█▄▄▄ ▒█▄▄█ ▒█░▒█ ░▒█░░ ▒█▄▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄▄█\033[0m");
-        Console(44,28);
+        Console(44, 28);
         printf("Clica no " "\033[34mESC\033[0m" " para sair do relatorio");
-        
-        Console(10,10);
-        printf("° VENDAS ");
-        Console(10,15);
-        printf("° ESTOQUE ");
+
+        // Exibir opções do menu
+        Console(10, 10);
+        printf(opcao == 0 ? "-> VENDAS " : "   VENDAS ");
+        Console(10, 15);
+        printf(opcao == 1 ? "-> ESTOQUE " : "   ESTOQUE ");
         Console(10, 20);
-        printf("° VENDAS POR PRODUTOS ");
+        printf(opcao == 2 ? "-> VENDAS POR PRODUTOS " : "   VENDAS POR PRODUTOS ");
 
-
-
-        setvbuf(stdin, NULL, _IONBF,0);
+        setvbuf(stdin, NULL, _IONBF, 0);
         tecla = getch();
-    } while (tecla != 27); // fim do
-    
-   return MenuDeGestaoHortifrut();
 
-}//fim funcao
+        switch (tecla) {
+            case 72: // Seta para cima
+                opcao = (opcao - 1 + totalOpcoes) % totalOpcoes;
+                break;
+            case 80: // Seta para baixo
+                opcao = (opcao + 1) % totalOpcoes;
+                break;
+            case 13: // Enter
+                // Ação para a opção selecionada
+                switch (opcao) {
+                    case 0: 
+                        char dataInicio[11], dataFim[11];
+                        int filtroProduto, filtroUID;
+                        Sleep(10);
+                        system("CLS");
+
+                        // Solicitar ao usuário os filtros
+                        printf("\nDigite a data de início (YYYY-MM-DD ou 'TODOS' para não filtrar): ");
+                        scanf("%10s", dataInicio);
+
+                        printf("\nDigite a data de término (YYYY-MM-DD ou 'TODOS' para não filtrar): ");
+                        scanf("%10s", dataFim);
+
+                        printf("\nDigite o código do produto (-1 para não filtrar): ");
+                        scanf("%d", &filtroProduto);
+
+                        printf("\nDigite o UID da venda (-1 para não filtrar): ");
+                        scanf("%d", &filtroUID);
+
+                        // Chamar a função para gerar o relatório
+                        gerarRelatorioVendas(
+                            strcmp(dataInicio, "TODOS") == 0 ? NULL : dataInicio,
+                            strcmp(dataFim, "TODOS") == 0 ? NULL : dataFim,
+                            filtroProduto,
+                            filtroUID
+                        );
+                        break;
+                    case 1:
+                        // Ação para "ESTOQUE"
+                        break;
+                    case 2:
+                        // Ação para "VENDAS POR PRODUTOS"
+                        break;
+                }
+                break;
+        }
+    } while (tecla != ESC);
+
+    MenuDeGestaoHortifrut();
+}
 
 void QUEMSOMOS(void)
 {
