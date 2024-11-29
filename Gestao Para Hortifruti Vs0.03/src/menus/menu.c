@@ -259,7 +259,7 @@ void FeedBack(void)
 		Console(5, 10);
 		printf("Somos a \033[36mConnection and Solution ©\033[0m e gostariamos de compartilhar o feedback sobre a ultima sessao e saber");
 		Console(5, 11);
-		printf("mum pouco sobre sua experiencia com o sistema. Para isso, gostariamos de pergunta:");
+		printf("um pouco sobre sua experiencia com o sistema. Para isso, gostariamos de pergunta:");
 		Console(4, 13);
 		printf("\033[33m(Por favor, utilize uma escala de 1 a 5, onde \033[31m1\033[33m representa \"muito insatisfeito\" e \033[32m5 \033[33mrepresenta \" Muito satisfeito\")");
 		Console(5, 14);
