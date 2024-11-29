@@ -387,8 +387,8 @@ void fluxoDeVendas() {
             Console(coluna, linha);
             printf(" ");
 
-            if (tecla == 77) escolha--;
-            else if (tecla == 75) escolha++;
+            if (tecla == 75) escolha--;
+            else if (tecla == 77) escolha++;
 
             if (escolha < 1)
                 escolha = 3;
