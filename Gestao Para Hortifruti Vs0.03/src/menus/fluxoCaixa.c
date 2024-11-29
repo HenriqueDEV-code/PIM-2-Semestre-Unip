@@ -28,11 +28,9 @@ void FluxoDeCaixa()
                " para sair do relatorio");
 
         Console(10, 7);
-        printf("\033[35m1. VENDA\033[0m");
+        printf("\033[35mVENDA\033[0m");
         Console(10, 9);
-        printf("\033[35m2. CANCELAR UMA VENDA\033[0m");
-        Console(10, 11);
-        printf("\033[35m3. LISTA DE VENDAS\033[0m");
+        printf("\033[35mCANCELAR UMA VENDA\033[0m");
 
         escolha = 1;
         linha = 7;
@@ -60,10 +58,6 @@ void FluxoDeCaixa()
                 case 2:
                     // Função para cancelar uma venda
                     cancelVendas();
-                    break;
-                case 3:
-                    // Função para listar vendas
-                    listVendas();
                     break;
                 case 0:
                     // Função para sair ou retornar ao menu anterior
@@ -97,12 +91,7 @@ void FluxoDeCaixa()
                 coluna = 8;
                 linha = 9;
             }
-            else if (escolha == 3)
-            {
-                coluna = 8;
-                linha = 11;
-            }
-
+          
             Console(coluna, linha);
             printf("➤");
 
@@ -179,7 +168,7 @@ void listVendas()
         setvbuf(stdin, NULL, _IONBF, 0);
         tecla = _getch();
 
-    } while (tecla != 27);
+    } while (tecla != ESC);
 
     return FluxoDeCaixa();
 }

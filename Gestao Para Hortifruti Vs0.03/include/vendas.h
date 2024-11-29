@@ -12,12 +12,14 @@ typedef struct {
     float quantity;
     float precoUnitario;
     float total;
-    char dateSale;  // Formato: YYYY-MM-DD
+    char dateSale[11];  // Formato: YYYY-MM-DD
     char bloqueado;
 } sales;
 
 void fluxoDeVendas();
 void cancelVendas();
 void listVendas();
+void atualizarEstoque();
+void gerarRelatorioVendas(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID);
 
 #endif 

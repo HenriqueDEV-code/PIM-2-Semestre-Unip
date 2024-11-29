@@ -171,12 +171,10 @@ int Validade_Data(const char* data) {
 }
 
 // Função para obter a data atual no formato YYYY-MM-DD
-char obterDataAtual() {
-    static char data[11]; // Formato YYYY-MM-DD
+void obterDataAtual(char *dataAtual) {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
-    sprintf(data, "%04d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
-    return data;
+    sprintf(dataAtual, "%04d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
 }
 
 void readCSV(const char* nome_arquivo, void (*processarLinha)(char** campos, int num_campos)) {
