@@ -20,6 +20,7 @@ void EditeProduto();
 void ExcluirProduto();
 void BuscarProduto();
 void ListarProduto();
+void gerarRelatorioEstoque(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID);
 
 
 #endif 

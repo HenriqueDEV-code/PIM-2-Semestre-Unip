@@ -164,7 +164,6 @@ void ListarProduto() {
     readCSV(ARQUIVO_ESTOQUE, leituraTodosProdutos);
 }
 
-// Função para gerar relatório parametrizado
 void gerarRelatorioVendas(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID) {
     FILE *arquivo = fopen(ARQUIVO_VENDAS, "r");
     if (!arquivo) {
@@ -209,6 +208,64 @@ void gerarRelatorioVendas(const char *dataInicio, const char *dataFim, int filtr
     if (!encontrouVendas) {
         printf("| Nenhuma venda encontrada com os filtros especificados.                             |\n");
     }
+    printf("=========================================================================================\n");
+
+    // Aguardar o pressionamento de uma tecla antes de sair
+    printf("\nPressione qualquer tecla para retornar...");
+    getch();
+    system("CLS");
+}
+
+void gerarRelatorioEstoque(const char *dataInicio, const char *dataFim, int filtroProduto, int filtroUID) {
+    FILE *arquivo = fopen(ARQUIVO_ESTOQUE, "r");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo de estoque");
+        return;
+    }
+
+    char linha[256];
+    int encontrouEstoque = 0;
+
+    // Cabeçalho do relatório
+    printf("=========================================================================================\n");
+    printf("| %-5s | %-15s | %-10s | %-10s | %-10s | %-10s | %-10s |\n", 
+           "UID", "NOME", "GRUPO", "PREÇO", "MEDIDA", "SALDO", "VALIDADE");
+    printf("=========================================================================================\n");
+
+    // Ler cada linha do arquivo
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        Mercadoria estoque;
+        // Ajuste no formato da leitura
+        sscanf(linha, "%d;%49[^;];%d;%f;%f;%f;%10[^;]", 
+               &estoque.UID, estoque.nome, &estoque.Grupo, &estoque.preco, 
+               &estoque.Medida, &estoque.QNT_Estoque, estoque.Data_Validade);
+
+        // Aplicar os filtros
+        int incluir = 1;
+        if (dataInicio && strcmp(estoque.Data_Validade, dataInicio) < 0)
+            incluir = 0;
+        if (dataFim && strcmp(estoque.Data_Validade, dataFim) > 0)
+            incluir = 0;
+        if (filtroProduto > 0 && estoque.Grupo != filtroProduto)
+            incluir = 0;
+        if (filtroUID > 0 && estoque.UID != filtroUID)
+            incluir = 0;
+
+        // Se passar nos filtros, imprime a linha
+        if (incluir) {
+            encontrouEstoque = 1;
+            printf("| %-5d | %-15s | %-10d | %-10.2f | %-10.2f | %-10.2f | %-10s |\n", 
+                   estoque.UID, estoque.nome, estoque.Grupo, estoque.preco, 
+                   estoque.Medida, estoque.QNT_Estoque, estoque.Data_Validade);
+        }
+    }
+
+    fclose(arquivo);
+
+    if (!encontrouEstoque) {
+        printf("| Nenhum item encontrado com os filtros especificados. |\n");
+    }
+
     printf("=========================================================================================\n");
 
     // Aguardar o pressionamento de uma tecla antes de sair

@@ -83,6 +83,8 @@ void RelatorioDeSistema() {
     int tecla;
     int opcao = 0; // Índice da opção selecionada
     const int totalOpcoes = 3; // Número total de opções
+    char dataInicio[11], dataFim[11];
+    int filtroProduto, filtroUID;
 
     Sleep(10);
     system("CLS");
@@ -122,8 +124,6 @@ void RelatorioDeSistema() {
                 // Ação para a opção selecionada
                 switch (opcao) {
                     case 0: 
-                        char dataInicio[11], dataFim[11];
-                        int filtroProduto, filtroUID;
                         Sleep(10);
                         system("CLS");
 
@@ -149,7 +149,29 @@ void RelatorioDeSistema() {
                         );
                         break;
                     case 1:
-                        // Ação para "ESTOQUE"
+                        Sleep(10);
+                        system("CLS");
+
+                        // Solicitar ao usuário os filtros
+                        printf("\nDigite a data de início (YYYY-MM-DD ou 'TODOS' para não filtrar): ");
+                        scanf("%10s", dataInicio);
+
+                        printf("\nDigite a data de término (YYYY-MM-DD ou 'TODOS' para não filtrar): ");
+                        scanf("%10s", dataFim);
+
+                        printf("\nDigite o código do produto (-1 para não filtrar): ");
+                        scanf("%d", &filtroProduto);
+
+                        printf("\nDigite o UID da venda (-1 para não filtrar): ");
+                        scanf("%d", &filtroUID);
+
+                        // Chamar a função para gerar o relatório
+                        gerarRelatorioEstoque(
+                            strcmp(dataInicio, "TODOS") == 0 ? NULL : dataInicio,
+                            strcmp(dataFim, "TODOS") == 0 ? NULL : dataFim,
+                            filtroProduto,
+                            filtroUID
+                        );
                         break;
                     case 2:
                         // Ação para "VENDAS POR PRODUTOS"

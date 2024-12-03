@@ -16,7 +16,7 @@ void CadastroProduto()
     ExibirBordas();
     Console(5, 8);
     Ler_Int(&produto.UID, "Digite o ID do produto: ");
-
+    
     if ((arquivo = fopen(ARQUIVO_ESTOQUE, "r")) != NULL)
     {
         if (VerificarIdDuplicado(arquivo, produto.UID))

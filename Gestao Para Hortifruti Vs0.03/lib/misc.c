@@ -84,30 +84,21 @@ void borda(int largura, int altura)
 
 
 /* Funcao para limpar o buffer da entrada de dados */
-void Limpar_Buffer()
-{
-	int c = 0;
-	while ((c = getchar() != '\n' && c != EOF));
+void Limpar_Buffer() {
+    while (getchar() != '\n');
 }
 
 
 /* Funcao para ler entrada do tipo inteiro com validação */
-void Ler_Int(int* valor, const char* mensagem)
-{
-	printf("%s", mensagem);
-	while (scanf("%d", valor) != 1 || *valor <= 0)
-	{
-		Console(5, 2);
-		printf("\a\033[31mENTRADA INVALIDA❗ TENTE NOVAMENTE.\033[0m");
-		Limpar_Buffer();
-		Sleep(500);
-		system("CLS");
-	}
-	Limpar_Buffer();
+void Ler_Int(int* valor, const char* mensagem) {
+    printf("%s", mensagem);
+    while (scanf("%d", valor) != 1 || *valor < 0) {
+        Limpar_Buffer();
+        printf("\a\033[31mENTRADA INVALIDA❗ TENTE NOVAMENTE.\033[0m\n");
+        printf("\033[F\033[K%s", mensagem);
+    }
+    Limpar_Buffer();
 }
-
-
-
 
 /* Funcao para ler entrada do tipo float com validação */
 void Ler_Float(float* valor, const char* mensagem)
