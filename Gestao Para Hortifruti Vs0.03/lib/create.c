@@ -283,7 +283,7 @@ void fluxoDeVendas() {
     Console(88, 3);
     printf("\033[36mTOTAL\033[0m");
     Console(100, 3);
-    printf("\033[33mSUB TOTAL: \033[0m");
+    printf("\033[33mSUB TOTAL \033[0m");
 
     // Menu inferior para entrada de dados
     Console(2, 26);
@@ -292,7 +292,7 @@ void fluxoDeVendas() {
     printf("\033[35mQUANTIDADE: \033[0m");
 
     // Botão Confirmar Compra
-    Console(98, 26);
+    Console(95, 26);
     printf("\033[32mCONFIRMAR COMPRA\033[0m");
 
     escolha = 1;
@@ -315,7 +315,7 @@ void fluxoDeVendas() {
             }
 
             if (escolha == 2) {
-                Console(26, 26);
+                Console(41, 26);
                 scanf("%f", &vendas[totalVendas].quantity);
 
                 // Abrir o arquivo de produtos e buscar o produto
@@ -387,17 +387,17 @@ void fluxoDeVendas() {
             Console(coluna, linha);
             printf(" ");
 
-            if (tecla == 77) escolha--;
-            else if (tecla == 75) escolha++;
+            if (tecla == 75) escolha--;
+            else if (tecla == 77) escolha++;
 
             if (escolha < 1)
                 escolha = 3;
             else if (escolha > 3)
                 escolha = 1;
 
-            if (escolha == 1) { coluna = 6; linha = 26; }
-            else if (escolha == 2) { coluna = 23; linha = 26; }
-            else if (escolha == 3) { coluna = 100; linha = 26; }
+            if (escolha == 1) { coluna = 5; linha = 26; }
+            else if (escolha == 2) { coluna = 41; linha = 26; }
+            else if (escolha == 3) { coluna = 112; linha = 26; }
             Console(coluna, linha);
             printf(" ");
         }
